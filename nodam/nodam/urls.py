@@ -23,4 +23,7 @@ urlpatterns = [
     path('community/', views.community, name='community'),
     path('signup/', views.signup, name='signup'),
     path('login/', views.login, name='login'),
+    path('dashboard/', views.dashboard, name='dashboard'),
+    path('smokingmap/', views.smokingmap, name='smokingmap'),
+    path('clinic/', views.clinic, name='clinic'),
 ]

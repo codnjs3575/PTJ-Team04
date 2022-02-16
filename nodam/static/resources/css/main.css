@@ -1,12 +1,19 @@
 
-/* @font-face {
-    font-family: 'SCDream7';
-    src:url('../font/SCDream7.otf') format('scd7');
-}  */
+@font-face {
+    font-family: 'SCD1'; src:url('../font/SCDream1.otf') format('truetype');
+    font-family: 'SCD2'; src:url('../font/SCDream2.otf') format('truetype');
+    font-family: 'SCD3'; src:url('../font/SCDream3.otf') format('truetype');
+    font-family: 'SCD4'; src:url('../font/SCDream4.otf') format('truetype');
+    font-family: 'SCD5'; src:url('../font/SCDream5.otf') format('truetype');
+    font-family: 'SCD6'; src:url('../font/SCDream6.otf') format('truetype');
+    font-family: 'SCD7'; src:url('../font/SCDream7.otf') format('truetype');
+    font-family: 'SCD8'; src:url('../font/SCDream8.otf') format('truetype');
+} 
 *{
     margin:0;
     padding:0;
-    font-family: Arial, Helvetica, sans-serif;
+    /* font-family: Arial, Helvetica, sans-serif; */
+    font-family: SCD4;
 }
 a:link{color:grey; text-decoration: none;}
 a:visited{color:grey; text-decoration: none;}
@@ -43,15 +50,17 @@ a:visited{color:grey; text-decoration: none;}
     width: 210px; height: 50px;
 }
 #head_quote{    
+    font-family: SCD8;
     position:absolute;
     color:grey;
     text-align: center;
     font-size: 25px;
+    /* font-weight: bold; */
     left:450px; top:40%;
     width: 600px; height: 35px;
-    font-weight: bold;
 }
 #head_quote > p {
+    font-family: SCD8;
     display: inline-block;
     color:rgba(240, 189, 65);
 }
@@ -70,6 +79,7 @@ a:visited{color:grey; text-decoration: none;}
     text-align: center;
 }
 #submenus{ 
+    font-family: SCD6;
     width:700px; height: 50px; 
     display: inline-block;
     align-content: center;    

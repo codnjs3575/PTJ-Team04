@@ -5,7 +5,12 @@
     <title>main</title>
     <link rel="stylesheet" type="text/css" href="../static/resources/css/main.css">
     <script src='../static/resources/js/jquery-3.6.0.min.js'></script>
-    <script></script>
+    <script>
+        $(document).ready(function(){
+            // alert('hi');
+        });
+        
+    </script>
 </head>
 <body>
     <div id="page_head">
@@ -23,8 +28,8 @@
             <ul>
                 <!-- <span><img id='menu_img' src="menu_img.png"></span> -->
                 <div id="submenus">
-                    <a href="{% url 'index' %}"><ol class="submenu" style="color:rgba(240, 189, 65);">메인</ol></a>
-                    <a href="{% url 'dashboard' %}"><ol class="submenu">대시보드</ol></a>
+                    <a href="{% url 'index' %}"><ol class="submenu">메인</ol></a>
+                    <a href="{% url 'dashboard' %}"><ol class="submenu" style="color:rgba(240, 189, 65);">대시보드</ol></a>
                     <a href="{% url 'smokingmap' %}"><ol class="submenu">흡연/금연구역</ol></a>
                     <a href="{% url 'clinic' %}"><ol class="submenu">금연 클리닉</ol></a>
                     <a href="{% url 'community' %}"><ol class="submenu">커뮤니티</ol></a>
@@ -33,23 +38,7 @@
         </div>
     </div>
     <div id="page_body">
-        <div id="body_top">
 
-        </div>
-        <div id='body_bottom'>
-            <div id="body_left">
-                <div id="body_profile">
-
-                </div>
-            </div>
-
-            <div id="body_center">
-
-            </div>
-            <div id="body_right">
-
-            </div>
-        </div>
     </div>
 
     <div id="page_foot">

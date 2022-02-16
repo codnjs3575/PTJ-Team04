@@ -117,8 +117,16 @@
     /* page_footer */
 #page_foot{
     text-align: center;
+    font-size: 15px;
+}
+
+#detail_logo{
+    position:absolute;
+    left:100px; top:30%;
+    width: 210px; height: 50px;
 }
 
 .foot_contact{
     text-align: center;
+
 }

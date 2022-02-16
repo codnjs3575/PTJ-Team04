@@ -107,3 +107,18 @@
     margin-right: 10px;
 }
 .submenu:hover{ color:firebrick;}
+
+
+
+
+
+
+    /* ------------------------------ */
+    /* page_footer */
+#page_foot{
+    text-align: center;
+}
+
+.foot_contact{
+    text-align: center;
+}

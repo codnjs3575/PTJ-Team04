@@ -1,0 +1,173 @@
+
+@font-face {
+    font-family: 'SCD1'; src:url('../font/SCDream1.otf') format('truetype');
+    font-family: 'SCD2'; src:url('../font/SCDream2.otf') format('truetype');
+    font-family: 'SCD3'; src:url('../font/SCDream3.otf') format('truetype');
+    font-family: 'SCD4'; src:url('../font/SCDream4.otf') format('truetype');
+    font-family: 'SCD5'; src:url('../font/SCDream5.otf') format('truetype');
+    font-family: 'SCD6'; src:url('../font/SCDream6.otf') format('truetype');
+    font-family: 'SCD7'; src:url('../font/SCDream7.otf') format('truetype');
+    font-family: 'SCD8'; src:url('../font/SCDream8.otf') format('truetype');
+} 
+*{
+    margin:0;
+    padding:0;
+    font-family: SCD4;
+}
+a:link{color:grey; text-decoration: none;}
+a:visited{color:grey; text-decoration: none;}
+
+/* #page_head,#page_body,#page_foot,#head_menu{
+    width:100%;
+} */
+#page_head{
+    position:relative;
+    height: 120px; width:1500px;
+    left:5%;
+}
+#page_body{
+    /* background-color: skyblue; */
+    position:relative;
+    height: 1300px;
+}
+#page_foot{
+    /* border: 2px solid red; */
+    position:relative;
+    height: 90px;
+    width:1400px;
+}
+/* -------------------------------------------------- */
+
+#head_title{
+    position: relative;
+    height: 60px;
+    display: inline-block;
+}
+#head_logo{
+    position:absolute;
+    left:150px; top:20%;
+    width: 210px; height: 50px;
+}
+#head_quote{    
+    font-family: SCD8;
+    position:absolute;
+    color:grey;
+    text-align: center;
+    font-size: 25px;
+    /* font-weight: bold; */
+    left:450px; top:40%;
+    width: 600px; height: 35px;
+}
+#head_quote > p {
+    font-family: SCD8;
+    display: inline-block;
+    color:rgba(240, 189, 65);
+}
+#head_signup{
+    position:absolute;
+    left:1200px; top:10%;
+    width: 115px; height: 30px;
+    /* padding-left: 30px; */
+    /* padding-top: 100px; */
+}
+#head_signup span { color:grey; }
+#head_signup span:hover { color:rgba(240, 189, 65); }
+#head_menu{
+    position: relative;
+    width:100%; height: 55px;
+    text-align: center;
+}
+#submenus{ 
+    font-family: SCD6;
+    width:700px; height: 50px; 
+    display: inline-block;
+    align-content: center;    
+}
+.submenu{
+    position: relative;
+    display:inline-block;
+    font-size: 20px;
+    font-weight: bolder;
+    padding-top:15px;
+    margin-left: 50px;
+    margin-right: 10px;
+}
+.submenu:hover{ color:rgba(240, 189, 65);}
+
+/* -------------------------------------------------- */
+
+#body_top{
+    background-color: rgba(240, 189, 65,0.8);
+    border:2px solid red;
+    /* ------------------------------ */
+    position: relative;
+    height: 440px;
+    width: 1500px;
+    /* width: 90%;
+    left: 5%; */
+}
+#body_bottom{
+    width:1500px;
+}
+#body_left{
+    margin-left: 10px;
+    display: inline-block;
+    border:2px solid blue;
+    width:300px; height: 800px;
+}
+#body_center{
+    display: inline-block;
+    border:2px solid blue;
+    width:860px; height: 800px;
+}
+#body_right{
+    display: inline-block;
+    border:2px solid blue;
+    width:300px; height: 800px;
+}
+
+
+/* -------------------------------------------------- */
+#detail_logo{
+    position:absolute;
+    margin-left: 30%;
+}
+
+#foot_contact{
+    font-size: 40px;
+    font-weight: bolder;
+    font-family: SCD6;
+    text-align: center;
+}
+
+#hourtitle{
+    font-size: 20px;
+    font-weight: bolder;
+    font-family: SCD6; 
+    text-align: center;
+}
+
+.workinghour{
+    font-size: 15px;
+    font-family: SCD6;
+    text-align: center;
+    font-weight: bolder;  
+}
+
+#foot_logo{
+    position:absolute;
+    left:100px;
+    top:-8%; 
+    width: 210px; height: 50px;
+    margin-left: 28%;
+    opacity: 0.6;
+}
+
+#companyinfo{
+    position:absolute;
+    top:20%; left:600px;
+    font-size: 15px;
+    font-weight: 600;
+    text-align: left; 
+    color:grey; 
+}

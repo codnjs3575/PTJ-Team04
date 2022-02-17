@@ -127,3 +127,63 @@ a:visited{color:grey; text-decoration: none;}
 
 
 /* -------------------------------------------------- */
+#detail_logo{
+    position:absolute;
+    margin-left: 30%;
+    
+}
+
+#foot_contact{
+    font-size: 40px;
+    font-weight: bolder;
+    font-family: SCD6;
+    text-align: center;
+}
+
+#hourtitle{
+    font-size: 20px;
+    font-weight: bolder;
+    font-family: SCD6; 
+    text-align: center;
+
+}
+
+#weekday{
+    font-size: 15px;
+    font-family: SCD6;
+    text-align: center;
+    font-weight: bolder;  
+}
+
+#holiday{
+    font-size: 15px;
+    font-family: SCD6;
+    text-align: center;
+    font-weight: bolder;
+}
+
+#ARS{
+    font-size: 15px;
+    font-family: SCD6;
+    text-align: center;
+    font-weight: bolder;
+}
+
+#company_name{
+    font-size: 20px;
+    font-family: SCD6;
+    text-align: center;
+
+}
+
+#company_address{
+    font-size: 20px;
+    font-family: SCD6;
+    text-align: center;
+}
+
+#copyright{
+    font-size: 15px;
+    font-family: SCD6;
+    text-align: center;  
+}

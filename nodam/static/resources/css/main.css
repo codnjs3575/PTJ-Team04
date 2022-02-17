@@ -130,7 +130,6 @@ a:visited{color:grey; text-decoration: none;}
 #detail_logo{
     position:absolute;
     margin-left: 30%;
-    
 }
 
 #foot_contact{
@@ -155,21 +154,21 @@ a:visited{color:grey; text-decoration: none;}
     font-weight: bolder;  
 }
 
-#company_name{
-    font-size: 20px;
-    font-family: SCD6;
-    text-align: center;
-
+#foot_logo{
+    position:absolute;
+    left:150px; top:20%;
+    width: 210px; height: 50px;
+    margin-left: 28%;
 }
 
-#company_address{
-    font-size: 20px;
+#companyinfo{
+    font-size: 10px;
     font-family: SCD6;
     text-align: center;
 }
 
 #copyright{
-    font-size: 15px;
+    font-size: 10px;
     font-family: SCD6;
     text-align: center;  
 }

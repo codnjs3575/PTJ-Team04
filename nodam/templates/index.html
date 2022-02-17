@@ -5,21 +5,17 @@
     <title>main</title>
     <link rel="stylesheet" type="text/css" href="../static/resources/css/main.css">
     <script src='../static/resources/js/jquery-3.6.0.min.js'></script>
-    <script>
-        $(document).ready(function(){
-            // alert('hi');
-        });
-        
-    </script>
+    <script></script>
 </head>
 <body>
     <div id="page_head">
         <div id="head_title">
-            <div id="head_logo"><img src="https://nosmk.khealth.or.kr/nsk/site/ntcc/images/logo.svg" width="200px"></div>
-            <div id="head_quote">나는 네가 #노담이면 좋겠어</div>
+            <div id="head_logo"><img src="../static/resources/imgs/logo.png" width="120px"></div>
+            <div id="head_quote">" 나는 네가 <p>#노담</p>이면 좋겠어 "</div>
             <div id="head_signup">
                 <a href="{% url 'signup' %}"><span> 회원가입 </span></a>
-                <a href="{% url 'login '}"><span> 로그인 </span></a>
+                <span>/</span>
+                <a href="{% url 'login' %}"><span> 로그인 </span></a>
             </div>
         </div>
 
@@ -27,20 +23,37 @@
             <ul>
                 <!-- <span><img id='menu_img' src="menu_img.png"></span> -->
                 <div id="submenus">
-                    <ol class="submenu">메인</ol>
-                    <ol class="submenu">대시보드</ol>
-                    <ol class="submenu">흡연/금연구역</ol>
-                    <ol class="submenu">금연 클리닉</ol>
+                    <a href="{% url 'index' %}"><ol class="submenu" style="color:rgba(240, 189, 65);">메인</ol></a>
+                    <a href="{% url 'dashboard' %}"><ol class="submenu">대시보드</ol></a>
+                    <a href="{% url 'smokingmap' %}"><ol class="submenu">흡연/금연구역</ol></a>
+                    <a href="{% url 'clinic' %}"><ol class="submenu">금연 클리닉</ol></a>
                     <a href="{% url 'community' %}"><ol class="submenu">커뮤니티</ol></a>
                 </div>
             </ul>
         </div>
     </div>
     <div id="page_body">
+        <div id="body_top">
+
+        </div>
+        <div id='body_bottom'>
+            <div id="body_left">
+                <div id="body_profile">
+
+                </div>
+            </div>
+
+            <div id="body_center">
+
+            </div>
+            <div id="body_right">
+
+            </div>
+        </div>
     </div>
 
     <div id="page_foot">
-        <div id="detail_logo"><img src="../static/resources/images/footicon.png" width="200px"></div>
+        <div id="head_logo"><img src="../static/resources/images/footicon.png" width="200px"></div>
         <div class="detail_info">
             <p class="contact">금연 상담 연락처 : 1544-9030</p>
             <p class="workinghour">영업시간 : </p>
@@ -52,12 +65,18 @@
                 ARS: 24시간
             </pre>
             <br>
+<<<<<<< Updated upstream
             <br>            
             <div id="companyinfo">
                 <p id="company_address">서울특별시 강남구 언주로 508 14층(역삼동, 서울상록빌딩)</p>
                 <p id="company_name">(주) 멀캠에서 코딩해조</p>
                 <p id="copyright">Copyright by Multicoding Co., Ltd. All rights reserved.</p>
             </div>
+=======
+            <p class="foot_company">(주) 멀캠에서 코딩해조</p>
+            <p class="foot_address"> 서울특별시 강남구 언주로 508 14층(역삼동, 서울상록빌딩)</p>
+            <p class="foot_copy">Copyright by Multicoding Co., Ltd. All rights reserved.</p>
+>>>>>>> Stashed changes
         </div>
     </div>
 </body>

@@ -5,8 +5,76 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    
+    <style>
+        #userID, #userPhone, #userEmail{
+            width: 200px;
+            height: 15px;
+            border: none;resize: none;overflow: hidden;
+            }
+        #userAttitude {
+            width: 400px;
+            height: 50px;
+            border: none;resize: none;overflow: hidden;
+        }
+    </style>
+    <script src='../static/resources/js/jquery-3.6.0.min.js'></script>
+    <script 'type= text/javascript>
+        // $(document).on("keyup", ".pwcheck", function() {
+        //     if(document.getElementById('pw').value !='' && document.getElementById('pw2').value!=''){
+        //         if(document.getElementById('pw').value==document.getElementById('pw2').value){
+        //             document.getElementById('check').innerHTML='비밀번호가 일치합니다.'
+        //         }
+        //         else{
+        //             document.getElementById('check').innerHTML='비밀번호가 일치하지 않습니다.';
+        //         }
+        //     }
+        // })
+        $(document).on("keyup", "#userPhone", function(){
+             $(this).val($(this).val().replace(/[^0-9]/g, "").replace(/(^02|^0505|^1[0-9]{3}|^0[0-9]{2})([0-9]+)?([0-9]{4})$/,"$1-$2-$3").replace("--", "-"))
+        })
+    </script>
 </head>
 <body>
-    
+    <form action="{% url 'signup' %}" method="post">{% csrf_token %}
+        아이디 : <textarea id="userID", name="userID", placeholder="사용하실 아이디를 입력하세요."></textarea>
+        <br><br>
+
+        비밀번호 : <input type="password",id='pw', name="userPW1"></input>
+        <br><br>
+
+        비밀번호 재확인 : <input type="password", id='pw2'> <span id ="check"></span>
+        <br><br>
+
+        이름 : <input type="text" name="userName">
+        <br><br>
+
+        생년월일 : <input type="text", name = 'userbirthDay' , placeholder="YYYYMMDD">
+
+        <br><br>
+
+        성별 : 
+        <select name="userGender">
+            <option value="">성별</option>
+            <option value="남">남</option>
+            <option value="여">여</option>
+        </select>
+        <br><br>
+
+        본인확인 이메일 : <textarea id="userEmail", name="userEmail", placeholder="leenodam@nodam.com" ></textarea>
+        <br><br>
+
+        휴대전화 : <textarea id='userPhone', name ='userPhone', placeholder="01012345678""></textarea>
+        <br><br>
+
+        각오 한마디 : <br><textarea id="userAttitude", name="userAttitude", placeholder="노담 시작의 각오 한마디 적어주세요!"></textarea> 
+        <br><br>
+
+        금연 시작일 : <input type="date" name="startDay">
+        <br><br>
+
+        <input type="submit" value="가입하기">
+        <input type="button" value="뒤로가기",onclick="location.href='../'" >
+    </form>
 </body>
 </html>

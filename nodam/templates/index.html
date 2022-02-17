@@ -13,15 +13,18 @@
             <div id="head_logo"><img src="../static/resources/imgs/logo.png" width="120px"></div>
             <div id="head_quote">" 나는 네가 <p>#노담</p>이면 좋겠어 "</div>
             <div id="head_signup">
-                <a href="{% url 'signup' %}"><span> 회원가입 </span></a>
-                <span>/</span>
-                <a href="{% url 'login' %}"><span> 로그인 </span></a>
+                {% if not request.session.username %}
+                    <a href="{% url 'signup' %}"><span> 회원가입 </span></a>
+                    <a href="{% url 'login' %}"><span> 로그인 </span></a>
+                {% else %}
+                    <h1>안녕하세요, {{request.session.username}}님</h1>
+                    <a href="{% url 'logout' %}"><span> 로그아웃 </span></a>
+                {% endif %}
             </div>
         </div>
 
         <div id="head_menu">
             <ul>
-                <!-- <span><img id='menu_img' src="menu_img.png"></span> -->
                 <div id="submenus">
                     <a href="{% url 'index' %}"><ol class="submenu" style="color:rgba(240, 189, 65);">메인</ol></a>
                     <a href="{% url 'dashboard' %}"><ol class="submenu">대시보드</ol></a>

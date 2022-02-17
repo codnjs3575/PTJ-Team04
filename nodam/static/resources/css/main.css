@@ -24,7 +24,6 @@ a:visited{color:grey; text-decoration: none;}
 #page_head{
     position:relative;
     height: 120px; width:1500px;
-    border:1px solid red;
     left:5%;
 }
 #page_body{

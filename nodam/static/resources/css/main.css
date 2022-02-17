@@ -67,8 +67,10 @@ a:visited{color:grey; text-decoration: none;}
     position:absolute;
     left:1200px; top:10%;
     width: 115px; height: 30px;
-    /* padding-left: 30px; */
-    /* padding-top: 100px; */
+    /*
+    padding-left: 30px;
+    padding-top: 100px;
+    */
 }
 #head_signup span { color:grey; }
 #head_signup span:hover { color:rgba(240, 189, 65); }

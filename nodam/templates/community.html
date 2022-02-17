@@ -8,13 +8,13 @@
 </head>
 <body>
     
-    <h1>Community</h1>
+    <h1>Hello, {{ request.session.myname | default:"Django" }} with mysql</h1>
 
     <table border="1">
-        <col width="50" />
-        <col width="100" />
-        <col width="500" />
-        <col width="100" />
+        <col width="50">
+        <col width="100">
+        <col width="500">
+        <col width="100">
         <tr>
             <th>번호</th>
             <th>작성자</th>
@@ -22,25 +22,69 @@
             <th>작성일</th>
         </tr>
         {% if not list %}
-        <tr>
-            <th colspan="4">---------- 작성된 글이 없습니다 ----------</th>
-        </tr>
+            <tr>
+                <th colspan="4">-----작성된 글이 없습니다-----</th>
+            </tr>
         {% else %}
             {% for data in list %}
                 <tr>
-                  <td>{{ data.id }}</td>
-                   <td>{{ data.myname }}</td>
-                  <td><a href="detail/{{data.id}}">{{ data.mytitle }}</a></td>
-                   <td>{{ data.mydate }}</td>
+                    <td>{{ data.id }}</td>
+                    <td>{{ data.myname }}</td>
+                    <td><a href="{% url 'detail' data.id %}">{{ data.mytitle }}</a></td>   <!-- 제목을 클릭하면 'detail'이라는 url로 넘어감, 그러기 위해 url.py에서 detail이라는 값을 가진 name 속성이 필요 -->
+                    <td>{{ data.mydate | date:"Y-m-d" }}</td>
                 </tr>
             {% endfor %}
         {% endif %}
         <tr>
             <td colspan="4" align="right">
-                <input type="button" value="글작성" onclick="location.href='/insertform'" />
+                <input type="button" value="글작성" onclick="location.href='/insertform'">   <!-- localhost:8000/insertform/ -->
             </td>
         </tr>
     </table>
+
+    <!-- 추가 -->
+
+    <!-- 처음으로 -->
+    <a href="?page=1">처음</a>
+    <!-- 이전 페이지 -->
+    {% if list.has_previous %}
+        <a href="?page={{list.previous_page_number}}">이전</a>
+    {% else %}
+        <a>이전</a>
+    {% endif%}
+
+    <!-- 페이징 -->
+    {% for page_num in list.paginator.page_range %}
+        {% if page_num == list.number %}
+            <b>{{ page_num }}</b>
+        {% else %}
+            <a href="?page={{ page_num }}">{{ page_num }}</a>
+        {% endif %}
+    {% endfor %}
+
+    <!-- 다음 페이지 -->
+    {% if list.has_next %}
+        <a href="?page={{ list.next_page_number }}">다음</a>
+    {% else %}
+        <a>다음</a>
+    {% endif %}
+
+    <!-- 끝으로 -->
+    <a href="?page={{ list.paginator.num_pages }}">끝</a>
+    <br><br>
+<!-- myboard의 아이템 5개가 하나의 페이지, 페이지의 전체 넘버로 이동 (= 끝 페이지)-->
+
+
+    <!-- 회원가입 -->
+    <a href="/register/">회원가입</a>
+    <br>
+
+    <!-- 로그인 -->
+    {% if not request.session.myname %}
+    <a href="login/">로그인</a>
+    {% else %}
+    <a href="logout/">로그아웃</a>
+    {% endif %}
 
 </body>
 </html>

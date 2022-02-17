@@ -18,8 +18,24 @@
             <div id="head_logo"><img src="https://nosmk.khealth.or.kr/nsk/site/ntcc/images/logo.svg" width="200px"></div>
             <div id="head_quote">나는 네가 #노담이면 좋겠어</div>
             <div id="head_signup">
-                <a href="{% url 'signup' %}"><span> 회원가입 </span></a>
-                <a href="{% url 'login '}"><span> 로그인 </span></a>
+                <!--로그인-->
+                
+                {% if not request.session.username %}
+                    <script>
+                        // console.log(requests)
+                    </script>
+                    
+                    <!--회원가입-->
+                    <a href="{% url 'signup' %}"><span> 회원가입 </span></a>
+                    <a href="{% url 'login' %}"><span> 로그인 </span></a>
+                {% else %}
+                    <script>
+                        alert('로그아웃')
+                    </script>
+                    <h1>안녕하세요, {{request.session.username}}님</h1> 
+                    <a href="{% url 'logout' %}"><span> 로그아웃 </span></a>
+                {% endif %}
+
             </div>
         </div>
 

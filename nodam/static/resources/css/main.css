@@ -112,7 +112,6 @@
 
 
 
-
     /* ------------------------------ */
     /* page_footer */
 #page_foot{
@@ -127,6 +126,42 @@
 }
 
 .foot_contact{
+    font-size: 40px;
+    font-weight: bolder;
+    font-family: SCD6;
+    text-align: center;
+}
+
+#hourtitle{
+    font-size: 20px;
+    font-weight: bolder;
+    font-family: SCD6; 
     text-align: center;
 
+}
+
+.workinghour{
+    font-size: 15px;
+    font-family: SCD6;
+    text-align: center;
+    font-weight: bolder;    
+}
+
+#company_name{
+    font-size: 20px;
+    font-family: SCD6;
+    text-align: center;
+    display: inline-block;
+}
+
+.foot_contact{
+    text-align: center;
+    display: inline-block;
+}
+
+#copyright{
+    font-size: 15px;
+    font-family: SCD6;
+    text-align: center;
+    display: inline-block;  
 }

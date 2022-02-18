@@ -113,10 +113,125 @@
 
 
     /* ------------------------------ */
+<<<<<<< Updated upstream
     /* page_footer */
 #page_foot{
     text-align: center;
     font-size: 15px;
+=======
+    position: relative;
+    height: 440px;
+    width: 1500px;
+    /* width: 90%;
+    left: 5%; */
+}
+#slide01{
+    /* width: 600px;
+    height: 600px; */
+    max-width: 100%; height: 440px;
+    display: block;  
+    margin: auto;
+
+}
+
+#slide02{
+    /* width: 600px;
+    height: 600px; */
+    width: 1150px; height: 440px;
+    display: block;  
+    margin: auto;
+
+}
+
+#slide03{
+    /* width: 600px;
+    height: 600px; */
+    max-width: 160%; height: 440px;
+    display: block;  
+    margin: auto;
+
+}
+
+.fa-chevron-left{
+    background-color: rgba(0, 0, 0, 0.5);
+    width:40px;
+    height:60px;
+    padding-top:9px;
+    display:flex;
+    justify-content: center;
+    min-height:1px;
+    border:1px solid #263945;
+    background-color: rgba(0,0,0,.5);
+    cursor : pointer;
+    color:white;
+    position : absolute;
+    left :8px;
+    top : 180px;
+}
+.fa-chevron-right{
+    background-color: rgba(0, 0, 0, 0.5);
+    width:40px;
+    height:60px;
+    padding-top:9px;
+    display:flex;
+    justify-content: center;
+    min-height:1px;
+    border:1px solid #263945;
+    background-color: rgba(0,0,0,.5);
+    cursor : pointer;
+    color: white;
+    position : absolute;
+    top:180px;
+    right:8px;
+}
+
+.slide button{
+    z-index:10;
+    top : 50%;
+}
+
+.slide button.slick-prev{
+    left:30px;
+    background-color: rgba(0, 0, 0, 0.5);
+    width:40px;
+    height:60px;
+    border:1px solid #263945;
+    cursor : pointer;
+    color:#00aeff;
+}
+
+.slide button.slick-next{
+    right:50px;
+    display : block;
+    background-color: rgba(0, 0, 0, 0.5);
+    width:40px;
+    height:60px;
+    border:1px solid #263945;
+    cursor : pointer;
+    color:#00aeff;
+}
+
+/* -------------------------------------------------- */
+
+#body_bottom{
+    width:1500px;
+}
+#body_left{
+    margin-left: 10px;
+    display: inline-block;
+    border:2px solid blue;
+    width:300px; height: 800px;
+}
+#body_center{
+    display: inline-block;
+    border:2px solid blue;
+    width:860px; height: 800px;
+}
+#body_right{
+    display: inline-block;
+    border:2px solid blue;
+    width:300px; height: 800px;
+>>>>>>> Stashed changes
 }
 
 #detail_logo{

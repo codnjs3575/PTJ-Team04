@@ -5,6 +5,10 @@
     <title>main</title>
     <link rel="stylesheet" type="text/css" href="../static/resources/css/main.css">
     <script src='../static/resources/js/jquery-3.6.0.min.js'></script>
+    <script src='resources/jquery-3.6.0.min.js'></script>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
     <script></script>
 </head>
 <body>
@@ -37,23 +41,45 @@
     </div>
     <div id="page_body">
         <div id="body_top">
+            <section class= 'slide'>
+                <div class="inner">
+                    <a href="https://nosmk.khealth.or.kr/nsk/ntcc/index.do"><img src="..\static\resources\imgs\slide_pic00.png" id="slide01"></a>
+                </div>
 
+                <div class="inner2">
+                    <a href="https://nosmk.khealth.or.kr/nsk/ntcc/index.do"><img src="..\static\resources\imgs\slide_pic02.png" id="slide02"></a>
+                </div>
+
+                <div class="inner3">
+                    <a href="https://www.nosmokeguide.go.kr/lay2/bbs/S1T371C388/A/161/view.do?article_seq=790936&cpage=1&rows=10&condition=&keyword=&cat=&rn=2"><img src="..\static\resources\imgs\slide_pic03.png" id="slide03"></a>
+                </div>
+            </section>
+            <button class="co1"><i class="fas fa-chevron-left fa-4x" id='prev'></i></button>
+            <button class="co2"><i class="fas fa-chevron-right fa-4x" id='next'></i></button>
         </div>
+
+        <!-- 이쪽 script를 위로 두고 싶었는데 안되네요 ㅠㅠ -->
+        <script type="text/javascript">
+            $('.slide').slick({
+                dots: true,
+                draggable : false,
+                dotsClass : 'btns',
+                nextArrow: $('#next'),
+                prevArrow: $('#prev'),                        
+            });
+        </script>
+
         <div id='body_bottom'>
             <div id="body_left">
                 <div id="body_profile">
-                    <div>
-
+                    <div id="user_profile">
+                        <div id="user_img"></div>
                     </div>
                 </div>
             </div>
 
-            <div id="body_center">
-
-            </div>
-            <div id="body_right">
-
-            </div>
+            <div id="body_center"></div>
+            <div id="body_right"></div>
         </div>
         
         <div id="page_foot">

@@ -22,20 +22,11 @@ class SignUp(models.Model):
         db_table= 'signup'
 
 
-class MyBoard(models.Model):   # MyBoard라는 table
-    myname = models.CharField(max_length=100)   # column
-    mytitle = models.CharField(max_length=500)   # column
-    mycontent = models.CharField(max_length=1000)   # column
-    mydate = models.DateTimeField()   # column
+class MyBoard(models.Model):
+    mytitle = models.CharField(max_length=500)   
+    mycontent = models.CharField(max_length=1000)   
+    mydate = models.DateTimeField()
 
     def __str__(self):
-        return str({'myname': self.myname, 'mytitle':self.mytitle, 'mycontent': self.mycontent, 'mydate':self.mydate })
+        return str({'mytitle':self.mytitle, 'mycontent': self.mycontent, 'mydate':self.mydate })
 
-
-class MyMember(models.Model):
-    myname = models.CharField(max_length=100)
-    mypassword = models.CharField(max_length=100)
-    myemail = models.CharField(max_length=100)
-
-    def __str__(self):
-        return str({'myname': self.myname, 'mypassword':self.mypassword, 'myemail': self.myemail})

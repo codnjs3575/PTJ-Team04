@@ -1,15 +1,31 @@
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html lang="en">
 <head>
     <meta charset=" UTF-8">
     <title>main</title>
     <link rel="stylesheet" type="text/css" href="../static/resources/css/main.css">
     <script src='../static/resources/js/jquery-3.6.0.min.js'></script>
-    <script src='resources/jquery-3.6.0.min.js'></script>
     <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
-    <script></script>
+    <script>
+        let xhttp = new XMLHttpRequest();
+        
+        xhttp.onreadystatechange = function () {
+            if(xhttp.readyState == 4 && xhttp.status == 200){
+                jsonfunc(this.responseText); //this = xhttp
+        //		jsonfunc(xhttp.responseText); // 둘다 가능
+            }
+        }
+        xhttp.open("GET","../static/resources/crawling/nc_count.json", true);
+        xhttp.send();
+
+        function jsonfunc( jsonText ) {
+            let json = JSON.parse(jsonText); // String -> json으로 변환
+            document.getElementById('count1').innerHTML = json['count1'];
+            document.getElementById('count2').innerHTML = json['count2'];
+        }
+    </script>
 </head>
 <body>
     <div id="page_head">
@@ -21,7 +37,7 @@
                     <a href="{% url 'signup' %}"><span> 회원가입 </span></a>
                     <a href="{% url 'login' %}"><span> 로그인 </span></a>
                 {% else %}
-                    <h1>안녕하세요, {{request.session.username}}님</h1>
+                    <!-- <p>안녕하세요, {{request.session.username}}님</p> -->
                     <a href="{% url 'logout' %}"><span> 로그아웃 </span></a>
                 {% endif %}
             </div>
@@ -45,25 +61,23 @@
                 <div class="inner">
                     <a href="https://nosmk.khealth.or.kr/nsk/ntcc/index.do"><img src="..\static\resources\imgs\slide_pic00.png" id="slide01"></a>
                 </div>
-
                 <div class="inner2">
                     <a href="https://nosmk.khealth.or.kr/nsk/ntcc/index.do"><img src="..\static\resources\imgs\slide_pic02.png" id="slide02"></a>
                 </div>
-
                 <div class="inner3">
                     <a href="https://www.nosmokeguide.go.kr/lay2/bbs/S1T371C388/A/161/view.do?article_seq=790936&cpage=1&rows=10&condition=&keyword=&cat=&rn=2"><img src="..\static\resources\imgs\slide_pic03.png" id="slide03"></a>
                 </div>
-            </section>
-            <button class="co1"><i class="fas fa-chevron-left fa-4x" id='prev'></i></button>
+            </section>  
+            <button class="co1"><i class="fas fa-chevron-left fa-4x" id='prev' ></i></button>
             <button class="co2"><i class="fas fa-chevron-right fa-4x" id='next'></i></button>
         </div>
 
         <!-- 이쪽 script를 위로 두고 싶었는데 안되네요 ㅠㅠ -->
         <script type="text/javascript">
             $('.slide').slick({
-                dots: true,
-                draggable : false,
-                dotsClass : 'btns',
+                // dots: true,
+                // draggable : false,
+                // dotsClass : 'btns',
                 nextArrow: $('#next'),
                 prevArrow: $('#prev'),                        
             });
@@ -75,11 +89,31 @@
                     <div id="user_profile">
                         <div id="user_img"></div>
                     </div>
+                    {% if not request.session.username %}
+                        <div id="user_name">  <a href="{% url 'login' %}">로그인</a>하기</div>
+                    {% else %}
+                        <div id="user_name_login"> {{request.session.username}}</div>
+                        <div id="user_comment"> 각오 어쩌구 난 할 수 있다</div>
+                        <div id="user_dday"> D + 230</div>
+                    {% endif %}
                 </div>
             </div>
-
-            <div id="body_center"></div>
-            <div id="body_right"></div>
+            <div id="body_center">
+                <div id="center01">
+                    <div id="success_box">
+                        <div id="box1">올해 금연 시도자<p id="count1"></p></div>
+                        <div id="box2">올해 금연 성공자<p id="count2"></p></div>
+                    </div>
+                </div>
+                <div id="center02">
+                    <div id="hot_borad">인기글</div>
+                </div>
+                <div id="center03"></div>
+            </div>
+            <div id="body_right">
+                <div class="right_img" id="right_img_01"></div>
+                <div class="right_img" id="right_img_02"></div>
+            </div>
         </div>
         
         <div id="page_foot">

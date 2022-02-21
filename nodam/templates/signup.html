@@ -5,21 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    
-    <style>
-        #userID, #userPhone, #userEmail{
-            width: 200px;
-            height: 15px;
-            border: none;resize: none;overflow: hidden;
-            }
-        #userAttitude {
-            width: 400px;
-            height: 50px;
-            border: none;resize: none;overflow: hidden;
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" href="../static/resources/css/signup.css">
     <script src='../static/resources/js/jquery-3.6.0.min.js'></script>
-    <script 'type= text/javascript>
+    <script src='../static/resources/js/jquery-3.6.0.min.js'></script>
+    <script type= text/javascript>
         // $(document).on("keyup", ".pwcheck", function() {
         //     if(document.getElementById('pw').value !='' && document.getElementById('pw2').value!=''){
         //         if(document.getElementById('pw').value==document.getElementById('pw2').value){
@@ -37,44 +26,96 @@
 </head>
 <body>
     <form action="{% url 'signup' %}" method="post">{% csrf_token %}
-        아이디 : <textarea id="userID", name="userID", placeholder="사용하실 아이디를 입력하세요."></textarea>
+        <!-- page_title -->
+        <br>
+        <br>
+        <h2 id="page_title">노담지킴이 회원가입</h2>
+
+        <!-- page_body1 -->
+        <div class="page_body1" border-radius = 10px>
+            <br>
+            <p id="IDtxt">아이디</p>
+            <br>
+            <textarea id="userID"value="ID", name="userID", placeholder="사용하실 아이디를 입력하세요.">@nodam.co.kr</textarea>
+            <br><br>
+            
+            <p id="passtxt">비밀번호</p>
+            <br>
+            <input type="password", id='userpw'>
+            <br><br>
+
+            <p id="passtxt2">비밀번호 확인</p>
+            <br>
+            <input type="password", id='userpw2'> <span id ="check"></span>
+            <p id="pw2txt">비밀번호 확인을 위해 다시 한번 입력 해 주세요</p>
+        </div>
+        <br>
+
+        <!-- page_body2 -->
+        <div class="page_body2">
+            <br>
+            <p id = "name">이름</p>
+            <br>
+            <input type="text" id="userName" placeholder="이름">
+            <br><br>
+            
+            <p id="birth">생년월일</p>
+            <br>
+            <input type="text", id = 'userbirthDay' , placeholder="YYYYMMDD">
+            <br><br>
+            <p id="gender">성별</p>
+            <br>
+            <select id="userGender">
+                <option value="">성별</option>
+                <option value="남">남</option>
+                <option value="여">여</option>
+            </select>
+            <br><br>
+            
+            <p id="email">본인확인 이메일</p>
+            <br>
+            <textarea id="userEmail", name="userEmail", placeholder="leenodam@nodam.com" ></textarea>
+            <br><br>
+            <p id="phone">휴대전화</p>
+            <br>
+            <textarea id='userPhone', name ='userPhone', placeholder="010-1234-5678""></textarea>
+            <br><br>
+        </div>
+        <br>
+
+        <!-- page_body3 -->
+        <div class="page_body3">
+            <br>
+            <p id="nonsmkdate">금연 시작일</p>
+            <br>
+            <input type="date" id="startDay">
+            <br><br>
+            <p id="motivation">각오 한마디</p>
+            <br>
+            <textarea id="userAttitude", name="userAttitude", placeholder="노담 시작의 각오 한마디 적어주세요!"></textarea>
+        </div>
+ 
+
         <br><br>
-
-        비밀번호 : <input type="password",id='pw', name="userPW1"></input>
-        <br><br>
-
-        비밀번호 재확인 : <input type="password", id='pw2'> <span id ="check"></span>
-        <br><br>
-
-        이름 : <input type="text" name="userName">
-        <br><br>
-
-        생년월일 : <input type="text", name = 'userbirthDay' , placeholder="YYYYMMDD">
-
-        <br><br>
-
-        성별 : 
-        <select name="userGender">
-            <option value="">성별</option>
-            <option value="남">남</option>
-            <option value="여">여</option>
-        </select>
-        <br><br>
-
-        본인확인 이메일 : <textarea id="userEmail", name="userEmail", placeholder="leenodam@nodam.com" ></textarea>
-        <br><br>
-
-        휴대전화 : <textarea id='userPhone', name ='userPhone', placeholder="01012345678""></textarea>
-        <br><br>
-
-        각오 한마디 : <br><textarea id="userAttitude", name="userAttitude", placeholder="노담 시작의 각오 한마디 적어주세요!"></textarea> 
-        <br><br>
-
-        금연 시작일 : <input type="date" name="startDay">
-        <br><br>
-
-        <input type="submit" value="가입하기">
-        <input type="button" value="뒤로가기",onclick="location.href='../'" >
+        <div class="last_register">
+            <input type="radio" id="infocollect">위 개인정보 수집 및 이용에 동의합니다.
+            <input type="radio" id="infocollectx">동의하지 않습니다.
+            <br><br>
+            <input type="submit" value="가입하기" id="register">
+            <input type="button" value="뒤로가기" id="back",onclick="location.href='../'" >
+        </div>
+   
     </form>
+ 
+    <!-- page_foot -->
+    <br>
+    <br>
+    <div class="page_foot">
+        <div id="foot_logo"><img src="..\static\resources\imgs\logo.png" width="100px"></div>           
+        <div id="companyinfo">
+            <p id="company_address">(주) 멀캠에서 코딩해조 | 서울특별시 강남구 언주로 508 14층(역삼동, 서울상록빌딩)</p>
+            <p id="copyright">Copyright by Multicoding Co., Ltd. All rights reserved.</p>
+        </div>
+    </div>
 </body>
 </html>

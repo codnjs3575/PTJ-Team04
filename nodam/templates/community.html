@@ -8,7 +8,7 @@
 </head>
 <body>
     
-    <h1>Hello, {{ request.session.myname | default:"Django" }} with mysql</h1>
+    <h1>Community</h1>
 
     <table border="1">
         <col width="50">
@@ -23,21 +23,21 @@
         </tr>
         {% if not list %}
             <tr>
-                <th colspan="4">-----작성된 글이 없습니다-----</th>
+                <th colspan="4">작성된 글이 없습니다</th>
             </tr>
         {% else %}
             {% for data in list %}
                 <tr>
                     <td>{{ data.id }}</td>
-                    <td>{{ data.myname }}</td>
-                    <td><a href="{% url 'detail' data.id %}">{{ data.mytitle }}</a></td>   <!-- 제목을 클릭하면 'detail'이라는 url로 넘어감, 그러기 위해 url.py에서 detail이라는 값을 가진 name 속성이 필요 -->
+                    <td>{{request.session.username}}</td>
+                    <td><a href="{% url 'detail' data.id %}">{{ data.mytitle }}</a></td>
                     <td>{{ data.mydate | date:"Y-m-d" }}</td>
                 </tr>
             {% endfor %}
         {% endif %}
         <tr>
             <td colspan="4" align="right">
-                <input type="button" value="글작성" onclick="location.href='/insertform'">   <!-- localhost:8000/insertform/ -->
+                <input type="button" value="글작성" onclick="location.href='/insertform'">
             </td>
         </tr>
     </table>
@@ -72,19 +72,7 @@
     <!-- 끝으로 -->
     <a href="?page={{ list.paginator.num_pages }}">끝</a>
     <br><br>
-<!-- myboard의 아이템 5개가 하나의 페이지, 페이지의 전체 넘버로 이동 (= 끝 페이지)-->
 
-
-    <!-- 회원가입 -->
-    <a href="/register/">회원가입</a>
-    <br>
-
-    <!-- 로그인 -->
-    {% if not request.session.myname %}
-    <a href="login/">로그인</a>
-    {% else %}
-    <a href="logout/">로그아웃</a>
-    {% endif %}
 
 </body>
 </html>

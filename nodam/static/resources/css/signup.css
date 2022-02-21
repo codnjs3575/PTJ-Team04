@@ -1,0 +1,162 @@
+@font-face {
+    font-family: 'SCD1'; src:url('../font/SCDream1.otf') format('truetype');
+    font-family: 'SCD2'; src:url('../font/SCDream2.otf') format('truetype');
+    font-family: 'SCD3'; src:url('../font/SCDream3.otf') format('truetype');
+    font-family: 'SCD4'; src:url('../font/SCDream4.otf') format('truetype');
+    font-family: 'SCD5'; src:url('../font/SCDream5.otf') format('truetype');
+    font-family: 'SCD6'; src:url('../font/SCDream6.otf') format('truetype');
+    font-family: 'SCD7'; src:url('../font/SCDream7.otf') format('truetype');
+    font-family: 'SCD8'; src:url('../font/SCDream8.otf') format('truetype');
+} 
+
+*{
+    margin:0;
+    padding:0;
+    font-family: SCD5;
+}
+
+
+.page_body1{
+    height: 250px; width:500px;
+    margin: 0 auto;
+    border: 4px solid grey;
+    box-shadow: 0 0 3px 0 rgba(0,0,0,0.3);
+    background-color: #fff;
+    text-align: center;
+    border-radius: 50px;
+}
+
+
+.page_body2{
+    height: 385px; width:500px;
+    margin: 0 auto;
+    border: 4px solid grey; 
+    text-align: center;
+    border-radius: 50px;
+}
+
+.page_body3{
+    height: 200px; width:500px;
+    margin: 0 auto;
+    border: 4px solid grey; 
+    text-align: center;
+    border-radius: 50px;
+}
+
+.page_foot{
+    /* border: 2px solid red; */
+    position:relative;
+    height: 90px;
+    width:1400px;
+}
+
+/* -------------------------------------------------- */
+
+#page_title{
+    font-family: SCD8;
+    position: relative;
+    text-align: center;
+    font-size: 25px;
+    height: 60px;
+    text-align: center;
+    text-decoration: underline grey;
+    text-underline-position:under;
+}
+
+
+
+/* -------------------------------------------------- */
+#IDtxt, #passtxt, #passtxt2{
+    display: inline-block;
+    font-family: SCD7;
+    font-size: 17px;
+    font-weight: bolder;
+    left: 10%;
+}
+#userID, #userpw, #userpw2{
+    font-family: SCD6;
+    color: grey;
+    width: 350px;
+    height: 25px;
+    text-align: center;
+    border: solid black;
+    border-width: 1px;
+    resize: none;
+    overflow: hidden;
+}
+
+.page_body1 #pw2txt{
+    font-size: 10px;
+    font-weight: bolder;
+    color: red;
+}
+
+
+/* -------------------------------------------------- */
+#name, #birth, #gender, #email, #phone{
+    display: inline-block;
+    font-family: SCD7;
+    font-size: 17px;
+    font-weight: bolder;  
+}
+
+#userName, #userbirthDay,#userGender, #userPhone, #userEmail{
+    font-family: SCD6;
+    color: grey;
+    width: 350px;
+    height: 25px;
+    text-align: center;
+    border: solid black;
+    border-width: 1px;
+    resize: none;
+    overflow: hidden;
+    }
+
+/* -------------------------------------------------- */
+#nonsmkdate, #motivation{
+    display: inline-block;
+    font-family: SCD7;
+    font-size: 17px;
+    font-weight: bolder;
+}
+
+
+#startDay, #userAttitude {
+    font-family: SCD6;
+    width: 350px;
+    height: 25px;
+    text-align: center;
+    border: solid black;
+    border-width: 1px;
+    resize: none;
+    overflow: hidden;
+}
+
+/* -------------------------------------------------- */
+.last_register{
+    margin: 0 auto;
+    text-align: center;
+}
+/* #infocollect, #infocollectx, #register, #back{
+    margin: 0 auto;
+    text-align: center;
+} */
+
+/* -------------------------------------------------- */
+#foot_logo{
+    position:absolute;
+    left:100px;
+    top:-8%; 
+    width: 210px; height: 50px;
+    margin-left: 28%;
+    opacity: 0.6;
+}
+
+#companyinfo{
+    position:absolute;
+    top:20%; left:600px;
+    font-size: 15px;
+    font-weight: 600;
+    text-align: left; 
+    color:grey; 
+}

@@ -27,4 +27,17 @@ urlpatterns = [
     path('dashboard/', views.dashboard, name='dashboard'),
     path('smokingmap/', views.smokingmap, name='smokingmap'),
     path('clinic/', views.clinic, name='clinic'),
+
+    path('insertform/', views.insert_form, name='insertform'),
+    path('insertres/', views.insert_res),
+    path('detail/<int:id>', views.detail, name='detail'),
+    path('updateform/<int:id>', views.update_form, name='updateform'),
+    path('updateres/', views.update_res),
+    path('delete/<int:id>', views.delete),
+
+    path('dashboard1/', views.dashboard1, name='dashboard1'),
+    path('dashboard2/', views.dashboard2, name='dashboard2'),
+    path('dashboard3/', views.dashboard3, name='dashboard3'),
+    path('dashboard4/', views.dashboard4, name='dashboard4'),
+    
 ]

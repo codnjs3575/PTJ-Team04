@@ -1,0 +1,30 @@
+<form action="{% url 'signup' %}" method="post">{% csrf_token %}
+            아이디 : <textarea id="user_id", name="userID", placeholder="사용하실 아이디를 입력하세요."></textarea>
+    
+            비밀번호 : <input type="password",id='user_pw', name="userPW1"></input>
+    
+            비밀번호 재확인 : <input type="password", id='user_pw2'> <span id ="check"></span>
+    
+            이름 : <input type="text" name="userName" id="user_name">
+    
+            생년월일 : <input type="text", name = 'userbirthDay', id="user_birthday" placeholder="YYYYMMDD">
+    
+    
+            성별 : 
+            <select name="userGender">
+                <option value="">성별</option>
+                <option value="남">남</option>
+                <option value="여">여</option>
+            </select>
+    
+            이메일 : <textarea id="user_email", name="userEmail", placeholder="leenodam@nodam.com" ></textarea>
+    
+            휴대전화 : <textarea id='user_phone', name ='userPhone', placeholder="01012345678""></textarea>
+
+            각오 한마디 : <br><textarea id="user_attitude", name="userAttitude", placeholder="노담 시작의 각오 한마디 적어주세요!"></textarea> 
+    
+            금연 시작일 : <input type="date" id='user_startday' name="startDay">
+    
+            <input type="submit" value="가입하기">
+            <input type="button" value="뒤로가기",onclick="location.href='../'" >
+        </form>

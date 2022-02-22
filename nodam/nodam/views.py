@@ -5,8 +5,23 @@ from django.utils import timezone
 from django.core.paginator import Paginator
 ###
 
-def index(requests): return render(requests,'index.html')
-def dashboard(requests): return render(requests,'dashboard.html')
+def index(requests): 
+    if (requests.session.get('username')):
+        user_id = requests.session.get('username')
+        user = SignUp.objects.get(userID=user_id)
+        return render(requests,'index.html',{'userinfo':user})
+    else :
+        return render(requests,'index.html')
+    
+def dashboard(requests): 
+    if (requests.session.get('username')):
+        user_id = requests.session.get('username')
+        user = SignUp.objects.get(userID=user_id)
+        return render(requests,'dashboard.html',{'userinfo':user})
+    else :
+        return render(requests,'dashboard.html')
+    
+    
 def smokingmap(requests): return render(requests,'map.html')
 def clinic(requests): return render(requests,'clinic.html')
 def dashboard1(requests): return render(requests,'dashboard1.html')
@@ -35,14 +50,20 @@ def signup(request):
         return redirect('/')
 
 def login(request):
+    # return render(requests,'index.html',{'userinfo':users})
     if request.method == 'POST':
         userID = request.POST['username']
         userPW = request.POST['password']
+        
+
         if userID and userPW: 
             user = SignUp.objects.get(userID=userID)
-
+            
+            # if userPW == user.userPW:
             if check_password(userPW , user.userPW):
+                print(userPW,user)
                 request.session['username'] = user.userID
+                # return render(request,'index.html',{'userinfo':user})
                 return redirect('/')
             else:
                 return redirect('/login')
@@ -57,7 +78,9 @@ def logout(requests):
 #
 #
 def community(requests):
+    myboardCount = MyBoard.objects.count()
     myboard = MyBoard.objects.all().order_by('-id')
+
     paginator = Paginator(myboard, 5)
     page_num = requests.GET.get('page', '1')
 
@@ -71,7 +94,7 @@ def community(requests):
     print(page_obj.start_index())
     print(page_obj.end_index())
 
-    return render(requests,'community.html', {'list': page_obj})
+    return render(requests, 'community.html', {'list': page_obj, "myboard":myboard, "myboardCount":myboardCount})
 
 
 def insert_form(request):
@@ -91,6 +114,12 @@ def insert_res(request):
 
 
 def detail(request, id):
+
+    # 조회수 증가
+    dto = MyBoard.objects.get(id=id)
+    dto.hit_up()
+    dto.save()
+
     return render(request, 'detail.html', {'dto': MyBoard.objects.get(id=id)})
 
 

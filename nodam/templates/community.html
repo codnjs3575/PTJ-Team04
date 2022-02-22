@@ -4,74 +4,236 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Community</title>
+    <link rel="stylesheet" type="text/css" href="../static/resources/css/community.css">
+    <script src='../static/resources/js/jquery-3.6.0.min.js'></script>
+    <script>
+                // --------------------------------------------------------------------
+                let xhttp = new XMLHttpRequest();
+
+        xhttp.onreadystatechange = function () {
+            if(xhttp.readyState == 4 && xhttp.status == 200){
+                jsonfunc(this.responseText); //this = xhttp
+        //		jsonfunc(xhttp.responseText); // 둘다 가능
+            }
+        }
+        xhttp.open("GET","../static/resources/crawling/nc_count.json", true);
+        xhttp.send();
+
+        function jsonfunc( jsonText ) {
+            let json = JSON.parse(jsonText); // String -> json으로 변환
+            document.getElementById('count1').innerHTML = json['count1']+'명';
+            document.getElementById('count2').innerHTML = json['count2']+'명';
+        }
+
+        // --------------------------------------------------------------------
+        let xhttp2 = new XMLHttpRequest();
+
+        xhttp2.onreadystatechange = function () {
+            if(xhttp2.readyState == 4 && xhttp2.status == 200){
+                create_list(this.responseText);
+            }
+        }
+        xhttp2.open("GET","../static/resources/crawling/publicHealth.json", true);
+        xhttp2.send();
+
+        function create_list( jsonText ) {
+            let json = JSON.parse(jsonText); // String -> json으로 변환
+            json = json['list']
+
+            var keys = Object.keys(json);
+            var list_ul = document.getElementById('left_list')
+            for(var i = 0; i<keys.length;i++){
+
+                var area = json[keys[i]][0]['area']
+
+                var list_li = document.createElement('li')
+                list_li.innerHTML=area
+                list_li.setAttribute('onclick','search_health('+keys[i]+')')
+                list_ul.appendChild(list_li)
+            }
+        }
+
+        // --------------------------------------------------------------------
+        function search_health(i){
+
+            let xhttp3 = new XMLHttpRequest();
+
+            xhttp3.onreadystatechange = function () {
+                if(xhttp3.readyState == 4 && xhttp3.status == 200){
+                    health(this.responseText,i); //this = xhttp
+                }
+            }
+            xhttp3.open("GET","../static/resources/crawling/publicHealth.json", true);
+            xhttp3.send();
+
+            function health(jsonText,num){
+                let json = JSON.parse(jsonText); // String -> json으로 변환
+                json = json['list']
+                // console.log(json[num])
+                var right_list = document.getElementById('right_list')
+
+                if (right_list.hasChildNodes('tr')){
+                    // console.log(right_list)
+                    var child_tr = document.getElementsByClassName('json_content_tr')
+
+                    while(child_tr.length > 0){
+                        child_tr[0].parentNode.removeChild(child_tr[0]);
+                    }
+                }
+
+                for (var i=0; i<json[num].length;i++){
+
+                    var json_content_tr = document.createElement('tr')
+                    json_content_tr.setAttribute('class','json_content_tr')
+                    json_content_tr.setAttribute('id','tr'+i)
+
+                    td_list = ['public','address','tel']
+
+                    for (var j=0; j<3; j++){
+                        var json_content_td = document.createElement('td')
+                        json_content_td.innerHTML = (json[num][i][td_list[j]])
+                        json_content_tr.appendChild(json_content_td)
+                    }
+
+
+                    // json_content.innerHTML = json[num][i]['tell']
+                    right_list.appendChild(json_content_tr)
+                }
+            }
+        }
+    </script>
 </head>
 <body>
-    
-    <h1>Community</h1>
+        <!-- page_head -->
+        <div id="page_head">
+            <div id="head_logo"></div>
+            <div id="head_title">
+                <div id="head_quote">" 나는 네가 <p>#노담</p>이면 좋겠어 "</div>
+                <div id="head_signup">
+                    {% if not request.session.username %}
+                        <a href="{% url 'signup' %}"><span> 회원가입 </span></a>
+                        <a href="{% url 'login' %}"><span> 로그인 </span></a>
+                    {% else %}
+                        <a href="{% url 'logout' %}"><span id="logout_text"> 로그아웃 </span></a>
+                    {% endif %}
+                </div>
+            </div>
 
-    <table border="1">
-        <col width="50">
-        <col width="100">
-        <col width="500">
-        <col width="100">
-        <tr>
-            <th>번호</th>
-            <th>작성자</th>
-            <th>제목</th>
-            <th>작성일</th>
-        </tr>
-        {% if not list %}
-            <tr>
-                <th colspan="4">작성된 글이 없습니다</th>
+            <div id="head_menu">
+                <ul>
+                    <div id="submenus">
+                        <a href="{% url 'index' %}"><ol class="submenu" >메인</ol></a>
+                        <a href="{% url 'smokingmap' %}"><ol class="submenu">흡연/금연구역</ol></a>
+                        <a href="{% url 'clinic' %}"><ol class="submenu">금연 클리닉</ol></a>
+                        <a href="{% url 'community' %}"><ol class="submenu" style="color:rgba(240, 189, 65);">커뮤니티</ol></a>
+                        <a href="{% url 'dashboard' %}"><ol class="submenu">대시보드</ol></a>
+                    </div>
+                </ul>
+            </div>
+        </div>
+
+        <br><br>
+        <div class="main_title">
+            <h1 id="title"><p id="title01">#노담노담 </p> 커뮤니티</h1>
+        </div>
+    </div>
+
+        <!-- page_body -->
+    <div class="page_body1">
+        <br>
+        <p id="nodam_quote">" #담배는 노답, #나는 노담! 우리 함께 이겨냅시다! "</p>
+        <br>
+        <p id="caution">
+            * 저속한 표현, 타인의 명예훼손, 상업성, 불 건전한 내용의 게시글을 게시할 경우 <br>
+            임의로 삭제될 수 있으며 노담노담 커뮤니티 서비스 이용에 불이익이 갈 수 있음을 알려드립니다.
+        </p>
+        <br>
+    </div>
+
+    <div class="page_body2">
+        <br><br>
+        <h5>게시글 : {{myboardCount}} 개</h5>
+        <table border='1' id="table">
+            <col width="150">
+            <col width="200">
+            <col width="600">
+            <col width="200">
+            <col width="60">
+            <tr id="attributes">
+                <th>번호</th>
+                <th>작성자</th>
+                <th>제목</th>
+                <th>작성일</th>
+                <th>조회수</th>
             </tr>
-        {% else %}
-            {% for data in list %}
+            {% if not list %}
                 <tr>
-                    <td>{{ data.id }}</td>
-                    <td>{{request.session.username}}</td>
-                    <td><a href="{% url 'detail' data.id %}">{{ data.mytitle }}</a></td>
-                    <td>{{ data.mydate | date:"Y-m-d" }}</td>
+                    <th colspan="5" id="nopost">작성된 글이 없습니다</th>
                 </tr>
-            {% endfor %}
-        {% endif %}
-        <tr>
-            <td colspan="4" align="right">
-                <input type="button" value="글작성" onclick="location.href='/insertform'">
-            </td>
-        </tr>
-    </table>
+            {% else %}
+                {% for data in list %}
+                    <tr>
+                        <td class="no" align="center">{{ data.id }}</td>
+                        <td align="center">{{request.session.username}}</td>
+                        <td><a href="{% url 'detail' data.id %}">{{ data.mytitle }}</a></td>
+                        <td align="center">{{ data.mydate | date:"Y-m-d A h:i" }}</td>
+                        <td align="center">{{ data.hit }}</td>
+                    </tr>
+                {% endfor %}
+            {% endif %}
+            <tr>
+                <td colspan="5" align="right">
+                    <input type="button" value="글작성" onclick="location.href='/insertform'">
+                </td>
+            </tr>
+        </table>
+    </div>
+
 
     <!-- 추가 -->
 
     <!-- 처음으로 -->
-    <a href="?page=1">처음</a>
-    <!-- 이전 페이지 -->
-    {% if list.has_previous %}
-        <a href="?page={{list.previous_page_number}}">이전</a>
-    {% else %}
-        <a>이전</a>
-    {% endif%}
-
-    <!-- 페이징 -->
-    {% for page_num in list.paginator.page_range %}
-        {% if page_num == list.number %}
-            <b>{{ page_num }}</b>
+    <div class="page_bottom">
+        <a href="?page=1">처음</a>
+        <!-- 이전 페이지 -->
+        {% if list.has_previous %}
+            <a href="?page={{list.previous_page_number}}">이전</a>
         {% else %}
-            <a href="?page={{ page_num }}">{{ page_num }}</a>
+            <a>이전</a>
+        {% endif%}
+
+        <!-- 페이징 -->
+        {% for page_num in list.paginator.page_range %}
+            {% if page_num == list.number %}
+                <b>{{ page_num }}</b>
+            {% else %}
+                <a href="?page={{ page_num }}">{{ page_num }}</a>
+            {% endif %}
+        {% endfor %}
+
+        <!-- 다음 페이지 -->
+        {% if list.has_next %}
+            <a href="?page={{ list.next_page_number }}">다음</a>
+        {% else %}
+            <a>다음</a>
         {% endif %}
-    {% endfor %}
 
-    <!-- 다음 페이지 -->
-    {% if list.has_next %}
-        <a href="?page={{ list.next_page_number }}">다음</a>
-    {% else %}
-        <a>다음</a>
-    {% endif %}
+        <!-- 끝으로 -->
+        <a href="?page={{ list.paginator.num_pages }}">끝</a>
+        <br><br>
+    </div>
 
-    <!-- 끝으로 -->
-    <a href="?page={{ list.paginator.num_pages }}">끝</a>
-    <br><br>
+    <!-- page_foot -->
+    <br>
+    <br>
+    <div class="page_foot">
+        <div id="foot_logo"><img src="..\static\resources\imgs\logo.png" width="100px"></div>
+        <div id="companyinfo">
+            <p id="company_address">(주) 멀캠에서 코딩해조 | 서울특별시 강남구 언주로 508 14층(역삼동, 서울상록빌딩)</p>
+            <p id="copyright">Copyright by Multicoding Co., Ltd. All rights reserved.</p>
+        </div>
+    </div>
 
 
 </body>

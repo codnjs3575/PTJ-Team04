@@ -23,10 +23,14 @@ class SignUp(models.Model):
 
 
 class MyBoard(models.Model):
+    myname = models.CharField(max_length=100)
     mytitle = models.CharField(max_length=500)   
     mycontent = models.CharField(max_length=1000)   
     mydate = models.DateTimeField()
+    hit = models.IntegerField(default=0)
 
     def __str__(self):
-        return str({'mytitle':self.mytitle, 'mycontent': self.mycontent, 'mydate':self.mydate })
+        return str({'myname':self.myname, 'mytitle':self.mytitle, 'mycontent': self.mycontent, 'mydate':self.mydate })
 
+    def hit_up(self):
+        self.hit += 1

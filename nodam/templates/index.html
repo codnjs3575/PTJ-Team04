@@ -2,13 +2,15 @@
 <html lang="en">
 <head>
     <meta charset=" UTF-8">
-    <title>main</title>
+    <title>노담지킴이</title>
     <link rel="stylesheet" type="text/css" href="../static/resources/css/main.css">
+    <!-- <link href="이미지주소.ico" rel="shortcut icon" type="image/x-icon"> -->
     <script src='../static/resources/js/jquery-3.6.0.min.js'></script>
     <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
     <script>
+        // --------------------------------------------------------------------
         let xhttp = new XMLHttpRequest();
         
         xhttp.onreadystatechange = function () {
@@ -22,23 +24,107 @@
 
         function jsonfunc( jsonText ) {
             let json = JSON.parse(jsonText); // String -> json으로 변환
-            document.getElementById('count1').innerHTML = json['count1'];
-            document.getElementById('count2').innerHTML = json['count2'];
+            document.getElementById('count1').innerHTML = json['count1']+'명';
+            document.getElementById('count2').innerHTML = json['count2']+'명';
+        }
+
+        // --------------------------------------------------------------------
+        let xhttp2 = new XMLHttpRequest();
+        
+        xhttp2.onreadystatechange = function () {
+            if(xhttp2.readyState == 4 && xhttp2.status == 200){
+                create_list(this.responseText); 
+            }
+        }
+        xhttp2.open("GET","../static/resources/crawling/publicHealth.json", true);
+        xhttp2.send();
+
+        function create_list( jsonText ) {
+            let json = JSON.parse(jsonText); // String -> json으로 변환
+            json = json['list']
+            
+            var keys = Object.keys(json);
+            var list_ul = document.getElementById('left_list')
+            for(var i = 0; i<keys.length;i++){
+                
+                var area = json[keys[i]][0]['area']
+                
+                var list_li = document.createElement('li')
+                list_li.innerHTML=area
+                list_li.setAttribute('onclick','search_health('+keys[i]+')')
+                list_li.setAttribute('id','health'+keys[i])
+                list_ul.appendChild(list_li)
+            }
+        }
+        
+        // --------------------------------------------------------------------
+        function search_health(i){
+            
+            let xhttp3 = new XMLHttpRequest();
+        
+            xhttp3.onreadystatechange = function () {
+                if(xhttp3.readyState == 4 && xhttp3.status == 200){
+                    health(this.responseText,i); //this = xhttp
+                }
+            }
+            xhttp3.open("GET","../static/resources/crawling/publicHealth.json", true);
+            xhttp3.send();
+
+            function health(jsonText,num){
+                var lists_li = document.getElementById('left_list').children
+                for (var i=0; i< lists_li.length; i++){
+                    lists_li[i].style.color = 'rgb(83, 83, 83)'
+                }
+                var list_li = document.getElementById('health'+num)
+                list_li.style.color = 'rgba(240, 189, 65)'
+                
+                let json = JSON.parse(jsonText); // String -> json으로 변환
+                json = json['list']
+                // console.log(json[num])
+                var right_list = document.getElementById('right_list')
+                
+                if (right_list.hasChildNodes('tr')){
+                    // console.log(right_list)
+                    var child_tr = document.getElementsByClassName('json_content_tr')
+
+                    while(child_tr.length > 0){
+                        child_tr[0].parentNode.removeChild(child_tr[0]);
+                    }
+                }
+
+                for (var i=0; i<json[num].length;i++){
+
+                    var json_content_tr = document.createElement('tr')
+                    json_content_tr.setAttribute('class','json_content_tr')
+                    json_content_tr.setAttribute('id','tr'+i)
+
+                    td_list = ['public','address','tel']
+
+                    for (var j=0; j<3; j++){
+                        var json_content_td = document.createElement('td')
+                        json_content_td.innerHTML = (json[num][i][td_list[j]])
+                        json_content_tr.appendChild(json_content_td)
+                    }
+                    
+
+                    // json_content.innerHTML = json[num][i]['tell']
+                    right_list.appendChild(json_content_tr)
+                }
+            }
         }
     </script>
 </head>
 <body>
     <div id="page_head">
+        <div id="head_logo"></div>
         <div id="head_title">
-            <div id="head_logo"><img src="../static/resources/imgs/logo.png" width="120px"></div>
             <div id="head_quote">" 나는 네가 <p>#노담</p>이면 좋겠어 "</div>
             <div id="head_signup">
                 {% if not request.session.username %}
                     <a href="{% url 'signup' %}"><span> 회원가입 </span></a>
                     <a href="{% url 'login' %}"><span> 로그인 </span></a>
                 {% else %}
-                    <!-- <p>안녕하세요, {{request.session.username}}님</p> -->
-                    <a href="{% url 'logout' %}"><span> 로그아웃 </span></a>
+                    <a href="{% url 'logout' %}"><span id="logout_text"> 로그아웃 </span></a>
                 {% endif %}
             </div>
         </div>
@@ -47,17 +133,17 @@
             <ul>
                 <div id="submenus">
                     <a href="{% url 'index' %}"><ol class="submenu" style="color:rgba(240, 189, 65);">메인</ol></a>
-                    <a href="{% url 'dashboard' %}"><ol class="submenu">대시보드</ol></a>
                     <a href="{% url 'smokingmap' %}"><ol class="submenu">흡연/금연구역</ol></a>
                     <a href="{% url 'clinic' %}"><ol class="submenu">금연 클리닉</ol></a>
                     <a href="{% url 'community' %}"><ol class="submenu">커뮤니티</ol></a>
+                    <a href="{% url 'dashboard' %}"><ol class="submenu">대시보드</ol></a>
                 </div>
             </ul>
         </div>
     </div>
     <div id="page_body">
         <div id="body_top">
-            <section class= 'slide'>
+            <section class="slide">
                 <div class="inner">
                     <a href="https://nosmk.khealth.or.kr/nsk/ntcc/index.do"><img src="..\static\resources\imgs\slide_pic00.png" id="slide01"></a>
                 </div>
@@ -67,20 +153,28 @@
                 <div class="inner3">
                     <a href="https://www.nosmokeguide.go.kr/lay2/bbs/S1T371C388/A/161/view.do?article_seq=790936&cpage=1&rows=10&condition=&keyword=&cat=&rn=2"><img src="..\static\resources\imgs\slide_pic03.png" id="slide03"></a>
                 </div>
-            </section>  
-            <button class="co1"><i class="fas fa-chevron-left fa-4x" id='prev' ></i></button>
-            <button class="co2"><i class="fas fa-chevron-right fa-4x" id='next'></i></button>
+            </section>
+            <div class="co1"><i class="fas fa-chevron-left fa-4x" id='prev'></i></div>
+            <div class="co2"><i class="fas fa-chevron-right fa-4x" id='next'></i></div>
+    
+    
         </div>
 
         <!-- 이쪽 script를 위로 두고 싶었는데 안되네요 ㅠㅠ -->
         <script type="text/javascript">
-            $('.slide').slick({
-                // dots: true,
-                // draggable : false,
-                // dotsClass : 'btns',
-                nextArrow: $('#next'),
-                prevArrow: $('#prev'),                        
-            });
+            $(document).ready(function(){
+                $('.slide').slick({
+                    slide: 'div',		//슬라이드 되어야 할 태그 ex) div, li 
+                    infinite : true, 	//무한 반복 옵션	 
+                    slidesToShow : 1,		// 한 화면에 보여질 컨텐츠 개수
+                    slidesToScroll : 1,		//스크롤 한번에 움직일 컨텐츠 개수
+                    speed : 100,
+                    draggable : false,
+                    nextArrow: $('#next'),
+                    prevArrow: $('#prev'),
+                });
+                
+            })
         </script>
 
         <div id='body_bottom'>
@@ -92,36 +186,92 @@
                     {% if not request.session.username %}
                         <div id="user_name">  <a href="{% url 'login' %}">로그인</a>하기</div>
                     {% else %}
-                        <div id="user_name_login"> {{request.session.username}}</div>
-                        <div id="user_comment"> 각오 어쩌구 난 할 수 있다</div>
-                        <div id="user_dday"> D + 230</div>
+                        {% if request.session.username == userinfo.userID %}
+                            <div id="user_name_login"> {{userinfo.userName}}</div>
+                            <div id="user_comment"> {{ userinfo.userAttitude }}</div>
+                            <div id="user_dday_title"></div>
+                            <div id="user_dday"></div>
+                            {% if userinfo.startDay %}
+                                <script>
+                                    var startday = new Date("{{userinfo.startDay}}");
+                                    var today = new Date();
+                                    var resultDate = parseInt((today-startday)/(1000*60*60*24))
+                                    
+                                    var date_div_title = document.getElementById('user_dday_title')
+                                    var date_div = document.getElementById('user_dday')
+
+                                    if (resultDate >= 0) {
+                                        date_div_title.innerHTML = '노담 시작'
+                                        date_div.innerHTML = 'D +'+resultDate;
+                                    } else{
+                                        date_div_title.innerHTML = '노담 시작'
+                                        date_div.innerHTML = 'D - '+Math.abs(resultDate);
+                                    }
+                                </script>
+                            {% endif %}
+                            
+                        {% endif %}
                     {% endif %}
                 </div>
             </div>
             <div id="body_center">
                 <div id="center01">
                     <div id="success_box">
-                        <div id="box1">올해 금연 시도자<p id="count1"></p></div>
-                        <div id="box2">올해 금연 성공자<p id="count2"></p></div>
+                        <div id="box_left">
+                            <div class="box_logo"></div>
+                            <div class="box_text">
+                                <div class="box_title"><p id="text">올해 금연 시도자</p>
+                                <div class="box_count"><p id="count1"></p></div></div>
+                            </div>
+                        </div>
+                        <div id="box_right">
+                            <div class="box_logo"></div>
+                            <div class="box_text">
+                                <div class="box_title"><p id="text">올해 금연 성공자</p>
+                                <div class="box_count"><p id="count2"></p></div></div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div id="center02">
-                    <div id="hot_borad">인기글</div>
+                    <div id="hot_board">
+                        <div id="hot_board_img"></div>
+                        <p id="hot_board_title">노담노담</p>
+                        <a href="{% url 'community' %}"><p id="view_all">전체 보기</p></a>
+                    </div>
                 </div>
-                <div id="center03"></div>
+                <div id="center03">
+                    <div id="search_health">
+                        <div id="health_top">
+                            <div id="health_img"></div>
+                            <p id="health_title">보건소 찾기</p>
+                            <a href="{% url 'clinic' %}"><p id="view_all">전체 보기</p></a>
+                        </div>
+                        <div id="health_left">
+                            <ul id="left_list"></ul>
+                        </div>
+                        <div id="health_right">
+                            <table id="right_list"></table>
+                        </div>
+
+                    </div>
+                </div>
             </div>
             <div id="body_right">
                 <div class="right_img" id="right_img_01"></div>
                 <div class="right_img" id="right_img_02"></div>
             </div>
         </div>
-        
-        <div id="page_foot">
-            <div id="foot_logo"><img src="..\static\resources\imgs\logo.png" width="100px"></div>           
-            <div id="companyinfo">
-                <p id="company_address">(주) 멀캠에서 코딩해조 | 서울특별시 강남구 언주로 508 14층(역삼동, 서울상록빌딩)</p>
-                <p id="copyright">Copyright by Multicoding Co., Ltd. All rights reserved.</p>
-            </div>
+
+    
+    </div> 
+    <div id="page_foot">
+        <div id="foot_logo"></div> 
+        <div id="companyinfo">
+            <p id="company_address">(주) 멀캠에서 코딩해조 | 서울특별시 강남구 언주로 508 14층(역삼동, 서울상록빌딩)</p>
+            <p id="copyright">Copyright by Multicoding Co., Ltd. All rights reserved.</p>
         </div>
+    </div>
+       
 </body>
 </html>

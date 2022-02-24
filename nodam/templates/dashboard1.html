@@ -4,6 +4,7 @@
     <meta charset=" UTF-8">
     <title>main</title>
     <link rel="stylesheet" type="text/css" href="../static/resources/css/main.css">
+    <link rel="stylesheet" type="text/css" href="../static/resources/css/dashboard.css">
     <script src='../static/resources/js/jquery-3.6.0.min.js'></script>
     <script>
         $(document).ready(function(){
@@ -41,22 +42,45 @@
             </ul>
         </div>
     </div>
-    <div id="page_body">
-        <div class="dashboard_button"><button id="dashboard1" onclick="dash1();">대쉬보드 1</button></div>
-        <div class="dashboard_button"><button id="dashboard2" onclick="dash2();">대쉬보드 2</button></div>
-        <div class="dashboard_button"><button id="dashboard3" onclick="dash3();">대쉬보드 3</button></div>
-        <div class="dashboard_button"><button id="dashboard4" onclick="dash4();">대쉬보드 4</button></div>
+    <div id="page_body" style="height: 1300px;">
+        
+        <div id="dashboard_body">
+            <!-- 대쉬보드 버튼  -->
+            <div id="dashboard_body_top">
+                <div class="dashboard_btns"><button id="dashboard1" onclick="dash1();" style="background-color: rgba(240, 189, 65); font-family: SCD6; color:black">대쉬보드 1</button></div>
+                <div class="dashboard_btns"><button id="dashboard2" onclick="dash2();">대쉬보드 2</button></div>
+                <div class="dashboard_btns"><button id="dashboard3" onclick="dash3();">대쉬보드 3</button></div>
+                <div class="dashboard_btns"><button id="dashboard4" onclick="dash4();">대쉬보드 4</button></div>
+            </div>
+
+            <!-- 대쉬보드 내용  -->
+            <div id="dashboard_body_cotent" style="height: 1150px;">
+                <div id="content_title">국내 흡연 실태</div>
+                <div id="content1">
+                    <div class="left_text" id="left_text_1">그림 1. 남녀별 흡연율 통계 </div>
+                    <div class='left_img' id="left_img_1"></div>
+                    <div class="left_text2" id="left_text2_1">< 출처 : 보건복지부 질병관리청 ></div>
+                </div>
+                <div id="content2">
+                    <div class="right_text" id="right_text_1">그림 2. OECD 국가들의 성인 남성 흡연율 통계</div>
+                    <div class='right_img' id="right_img_1"></div>
+                    <div class="right_text2" id="right_text2_1">< 출처 : 경제협력개발기구(OECD) ></div>
+                </div>
+            </div>
+        
+        </div>
+
+        
+        
     </div>
 
     <div id="page_foot">
-        <div class="detail_info">
-            <p class="foot_contact">금연 상담 연락처 : 1544-9030</p>
-            <p class="foot_contact">영업시간 : </p>
-            <br>
-            <p class="foot_company">(주) 멀캠에서 코딩해조</p>
-            <p class="foot_address"> 서울특별시 강남구 언주로 508 14층(역삼동, 서울상록빌딩)</p>
-            <p class="foot_copy">Copyright by Multicoding Co., Ltd. All rights reserved.</p>
+        <div id="foot_logo"></div> 
+        <div id="companyinfo">
+            <p id="company_address">(주) 멀캠에서 코딩해조 | 서울특별시 강남구 언주로 508 14층(역삼동, 서울상록빌딩)</p>
+            <p id="copyright">Copyright by Multicoding Co., Ltd. All rights reserved.</p>
         </div>
     </div>
+        
 </body>
 </html>

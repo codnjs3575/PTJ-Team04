@@ -6,24 +6,40 @@ from django.core.paginator import Paginator
 ###
 
 def index(requests): 
+    community = MyBoard.objects.all().order_by('-hit')
+    community2 = MyBoard.objects.all().order_by('-mydate')
     if (requests.session.get('username')):
         user_id = requests.session.get('username')
         user = SignUp.objects.get(userID=user_id)
-        return render(requests,'index.html',{'userinfo':user})
+        return render(requests,'index.html',{'userinfo':user, 'community' : community,'community2':community2})
     else :
-        return render(requests,'index.html')
+        return render(requests,'index.html',{'community' : community,'community2':community2})
     
 def dashboard(requests): 
     if (requests.session.get('username')):
         user_id = requests.session.get('username')
         user = SignUp.objects.get(userID=user_id)
-        return render(requests,'dashboard.html',{'userinfo':user})
+        return render(requests,'dashboard1.html',{'userinfo':user})
     else :
-        return render(requests,'dashboard.html')
+        return render(requests,'dashboard1.html')
     
     
-def smokingmap(requests): return render(requests,'map.html')
-def clinic(requests): return render(requests,'clinic.html')
+def smokingmap(requests): 
+    if (requests.session.get('username')):
+        user_id = requests.session.get('username')
+        user = SignUp.objects.get(userID=user_id)
+        return render(requests,'map.html',{'userinfo':user})
+    else :
+        return render(requests,'map.html')
+
+def clinic(requests): 
+    if (requests.session.get('username')):
+        user_id = requests.session.get('username')
+        user = SignUp.objects.get(userID=user_id)
+        return render(requests,'clinic.html',{'userinfo':user})
+    else :
+        return render(requests,'clinic.html')
+        
 def dashboard1(requests): return render(requests,'dashboard1.html')
 def dashboard2(requests): return render(requests,'dashboard2.html')
 def dashboard3(requests): return render(requests,'dashboard3.html')
@@ -47,7 +63,7 @@ def signup(request):
         SignUp.objects.create(userID=userID, userPW=make_password(userPW), userName=userName,
                             userbirthDay=userbirthDay, userEmail=userEmail,userGender=userGender,
                             userPhone=userPhone,userAttitude=userAttitude,startDay=startDay)
-        return redirect('/')
+        return redirect('/login')
 
 def login(request):
     # return render(requests,'index.html',{'userinfo':users})
@@ -81,18 +97,10 @@ def community(requests):
     myboardCount = MyBoard.objects.count()
     myboard = MyBoard.objects.all().order_by('-id')
 
-    paginator = Paginator(myboard, 5)
+    paginator = Paginator(myboard, 10)
     page_num = requests.GET.get('page', '1')
 
     page_obj = paginator.get_page(page_num)
-
-    try:
-        print(page_obj.next_page_number())
-        print(page_obj.previous_page_number())
-    except:
-        pass
-    print(page_obj.start_index())
-    print(page_obj.end_index())
 
     return render(requests, 'community.html', {'list': page_obj, "myboard":myboard, "myboardCount":myboardCount})
 
@@ -101,11 +109,12 @@ def insert_form(request):
     return render(request, 'insert.html')
 
 
-def insert_res(request):
-    mytitle = request.POST['mytitle']
-    mycontent = request.POST['mycontent']
+def insert_res(requests):
+    myname = requests.session.get('username')
+    mytitle = requests.POST['mytitle']
+    mycontent = requests.POST['mycontent']
 
-    result = MyBoard.objects.create(mytitle=mytitle, mycontent=mycontent, mydate=timezone.now())
+    result = MyBoard.objects.create(myname=myname,mytitle=mytitle, mycontent=mycontent, mydate=timezone.now())
 
     if result:
         return redirect('/community/')
@@ -136,8 +145,9 @@ def update_res(request):
 
     result_title = myboard.update(mytitle=mytitle)
     result_content = myboard.update(mycontent=mycontent)
+    result_time = myboard.update(mydate=timezone.now())
 
-    if result_title + result_content == 2 :
+    if result_title + result_content + result_time == 3 :
         return redirect('/detail/'+id)
     else :
         return redirect('/updateform/'+id)

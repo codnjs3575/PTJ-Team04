@@ -1,0 +1,37 @@
+#select_area{
+    width: 60px;
+    height: 25px;
+}
+
+#page_body{
+    top: 50px;
+}
+
+#clinicSearch{
+    width: 80%;
+    margin : auto;
+    height: 7%;
+    line-height: 45px;
+    border: 5px solid rgba(240, 189, 65);
+    border-left: none;
+    border-right: none;
+    text-align: center;
+    vertical-align: middle;
+}
+
+#search{
+    width: 80%;
+    margin : auto;
+    text-align: center;
+    padding: 15px;
+}
+
+th{
+    padding: 12px;
+    border-bottom: 3px solid rgb(197, 197, 196);
+    text-align: center;
+}
+
+td{
+    padding: 8px;
+}

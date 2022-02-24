@@ -2,13 +2,88 @@
 <html lang="en">
 <head>
     <meta charset=" UTF-8">
-    <title>main</title>
+    <title>노담지킴이</title>
     <link rel="stylesheet" type="text/css" href="../static/resources/css/main.css">
+    <link rel="stylesheet" type="text/css" href="../static/resources/css/clinic.css">
     <script src='../static/resources/js/jquery-3.6.0.min.js'></script>
     <script>
-        $(document).ready(function(){
-            // alert('hi');
-        });
+    //--------------------------------------------------------------------------
+        let xhttp2 = new XMLHttpRequest();
+        
+        xhttp2.onreadystatechange = function () {
+            if(xhttp2.readyState == 4 && xhttp2.status == 200){
+                create_list(this.responseText); 
+            }
+        }
+        xhttp2.open("GET","../static/resources/crawling/publicHealth.json", true);
+        xhttp2.send();
+
+        function create_list( jsonText ) {
+            let json = JSON.parse(jsonText); // String -> json으로 변환
+            json = json['list']
+            // console.log(json)
+            
+            var keys = Object.keys(json);
+            var list_select = document.getElementById('select_area')
+
+            for(var i = 0; i<keys.length;i++){
+                // console.log(json[keys[i]][0])
+                var area = json[keys[i]][0]['area']
+                
+                // console.log(area)
+                var list_option = document.createElement('option')
+                list_option.innerHTML=area
+                list_option.setAttribute('value',keys[i])
+                list_select.appendChild(list_option)
+            }
+        }
+
+    //--------------------------------------------------------------------------
+        function search_health(i){
+            // console.log(i)
+            let xhttp3 = new XMLHttpRequest();
+        
+            xhttp3.onreadystatechange = function () {
+                if(xhttp3.readyState == 4 && xhttp3.status == 200){
+                    health(this.responseText,i); //this = xhttp
+                }
+            }
+            xhttp3.open("GET","../static/resources/crawling/publicHealth.json", true);
+            xhttp3.send();
+
+            function health(jsonText,num){
+                let json = JSON.parse(jsonText);
+                json = json['list']
+                
+                var result = document.getElementById('result_table')
+                
+                if (result.hasChildNodes('tr')){
+                    var child_tr = document.getElementsByClassName('content_tr')
+
+                    while(child_tr.length > 0){
+                        child_tr[0].parentNode.removeChild(child_tr[0]);
+                    }
+                }
+
+                for (var i=0; i<json[num].length; i++){
+                    var content_tr = document.createElement('tr')
+
+                    content_tr.setAttribute('class','content_tr')
+                    content_tr.setAttribute('id','tr'+i)
+
+                    td_list = ['area','public','address','tel']
+
+                    for (var j=0; j<4; j++){
+                        var content_td = document.createElement('td')
+                        content_td.innerHTML = (json[num][i][td_list[j]])
+                        content_td.setAttribute('class',td_list[j]+'_td')
+                        content_tr.appendChild(content_td)
+                    }
+
+                    result.appendChild(content_tr)
+                }
+            }
+        }
         
     </script>
 </head>
@@ -38,8 +113,37 @@
         </div>
     </div>
     <div id="page_body">
-        <div id="body_clinic">
-            
+
+        <div id="clinicSearch">
+            <label id="area">
+                <h3>보건소</h3>
+                <a>지역선택</a>
+                <select name="area" id="select_area"></select>
+            </label>
+        </div>
+
+        <div id="search">
+            <table>
+                <colgroup >
+                    <col style="width:135px">
+                    <col style="width:230px">
+                    <col style="width:600px">
+                    <col style="width:130px">
+                </colgroup>
+
+                <thead>
+                    <tr>
+                        <th scope="col">지역</th>
+                        <th scope="col">기관</th>
+                        <th scope="col">주소</th>
+                        <th scope="col">연락처</th>
+                    </tr>
+                </thead>
+
+                <div id="tbodyId">
+                    <tbody id="result_table"></tbody>
+                </div>
+            </table>  
         </div>
     </div>
 
@@ -52,3 +156,12 @@
     </div>
 </body>
 </html>
+
+<script>
+    var select1 = document.getElementById('select_area')
+        // console.log(select1)
+        $('select').on("change",function(){
+            // console.log($(this).val())
+            search_health($(this).val())
+        })
+</script>

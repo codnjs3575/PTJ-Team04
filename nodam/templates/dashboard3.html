@@ -4,10 +4,11 @@
     <meta charset=" UTF-8">
     <title>main</title>
     <link rel="stylesheet" type="text/css" href="../static/resources/css/main.css">
+    <link rel="stylesheet" type="text/css" href="../static/resources/css/dashboard.css">
     <script src='../static/resources/js/jquery-3.6.0.min.js'></script>
     <script>
         $(document).ready(function(){
-            // alert('hi');
+            document.getElementById('db3').innerHTML='<object width="100%" height="720px" type="text/html" data="../static/resources/html/금연구역히트맵.html"></object>';
         });
         function dash1(){location.href = '{% url "dashboard1" %}';}
         function dash2(){location.href = '{% url "dashboard2" %}';}
@@ -18,6 +19,7 @@
 </head>
 <body>
     <div id="page_head">
+
         <div id="head_title">
             <div id="head_logo"><img src="../static/resources/imgs/logo.png" width="120px"></div>
             <div id="head_quote">" 나는 네가 <p>#노담</p>이면 좋겠어 "</div>
@@ -27,7 +29,6 @@
                 <a href="{% url 'login' %}"><span> 로그인 </span></a>
             </div>
         </div>
-
         <div id="head_menu">
             <ul>
                 <!-- <span><img id='menu_img' src="menu_img.png"></span> -->
@@ -41,22 +42,35 @@
             </ul>
         </div>
     </div>
-    <div id="page_body">
-        <div class="dashboard_button"><button id="dashboard1" onclick="dash1();">대쉬보드 1</button></div>
-        <div class="dashboard_button"><button id="dashboard2" onclick="dash2();">대쉬보드 2</button></div>
-        <div class="dashboard_button"><button id="dashboard3" onclick="dash3();">대쉬보드 3</button></div>
-        <div class="dashboard_button"><button id="dashboard4" onclick="dash4();">대쉬보드 4</button></div>
-    </div>
+    <div id="page_body" style="height: 900px;">
+        <div id="dashboard_body">
+            <!-- 대쉬보드 버튼  -->
+            <div id="dashboard_body_top">
+                <div class="dashboard_btns"><button id="dashboard1" onclick="dash1();">대쉬보드 1</button></div>
+                <div class="dashboard_btns"><button id="dashboard2" onclick="dash2();">대쉬보드 2</button></div>
+                <div class="dashboard_btns"><button id="dashboard3" onclick="dash3();" style="background-color: rgba(240, 189, 65); font-family: SCD6; color:black">대쉬보드 3</button></div>
+                <div class="dashboard_btns"><button id="dashboard4" onclick="dash4();">대쉬보드 4</button></div>
+            </div>
 
-    <div id="page_foot">
-        <div class="detail_info">
-            <p class="foot_contact">금연 상담 연락처 : 1544-9030</p>
-            <p class="foot_contact">영업시간 : </p>
-            <br>
-            <p class="foot_company">(주) 멀캠에서 코딩해조</p>
-            <p class="foot_address"> 서울특별시 강남구 언주로 508 14층(역삼동, 서울상록빌딩)</p>
-            <p class="foot_copy">Copyright by Multicoding Co., Ltd. All rights reserved.</p>
+            <!-- 대쉬보드 내용  -->
+            <div id="dashboard_body_cotent" style="height: 780px;">
+                <div id="content_title">서울시 금연구역 <p id="title_text">< 지역사회 건강통계 ></p> </div>
+                <div id="db3"></div>
+                <!-- <p>설명</p> -->
+           
+            </div>
+
+            
         </div>
     </div>
+    
+    <div id="page_foot">
+        <div id="foot_logo"></div> 
+        <div id="companyinfo">
+            <p id="company_address">(주) 멀캠에서 코딩해조 | 서울특별시 강남구 언주로 508 14층(역삼동, 서울상록빌딩)</p>
+            <p id="copyright">Copyright by Multicoding Co., Ltd. All rights reserved.</p>
+        </div>
+    </div>
+        
 </body>
 </html>

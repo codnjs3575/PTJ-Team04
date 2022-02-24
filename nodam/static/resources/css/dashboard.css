@@ -1,26 +1,126 @@
 #page_body{
-    height: 700px;
+    height: 750px;
+    /* background-color: skyblue; */
 }
-#dashboard_left{
+
+#dashboard_body{
     position: absolute;
-    width: 280px; height: 700px; left:120px;
-    /* background-color: lightcoral; */
+    width: 900px; height: 700px; left:300px;
+    /* background-color: lightgreen; */
 }
-#dashboard_right{
+#dashboard_body_top{
     position: absolute;
-    width: 900px; height: 700px; left:400px;
-    background-color: lightgreen;
+    width: 600px; height: 50px; left: 200px; top: 40px;
+    /* background-color: lightgrey; */
 }
-#dashboard_right_top{
-    position: absolute;
-    width: 900px; height: 100px; 
-    background-color: lightgrey;
+.dashboard_btns{ 
+    display: inline-block;
 }
-.dashboard{ display: inline-block; }
-.dashboard button{
+.dashboard_btns button{
     border: 2px solid rgba(240, 189, 65);
     border-radius: 5px;
     background-color: white;
     padding: 5px;
-    margin-left: 10px;
+    margin-left: 30px;
+    font-family: SCD5; color:grey;
+    width: 100px; height: 40px;
+}
+
+#content1{
+    position:absolute;
+    /* border-bottom: 2px solid black; */
+    /* background-color: red; */
+    width: 90%; height: 48%; left:5%;
+}
+#content2{
+    position:absolute;
+    width: 90%; height: 45%; left:5%; top:580px;
+}
+
+#dashboard_body_cotent{
+    border: 2px solid rgba(240, 189, 65);
+    padding-left: 10px;
+    padding-right: 10px;
+    position: absolute;
+    top: 110px; width: 100%; height: 730px;
+}
+
+#content_title{
+    width: 100%; height: 30px; margin-top: 10px;
+    font-size: 20px;
+    font-family: SCD5;
+    text-align: center; 
+}
+
+#content_left,#content_right{
+    position: absolute;
+    width: 35%; height: 350px; top:20px; left:3%;
+}
+.left_text,.right_text{
+    z-index: 100;
+    position: absolute;
+    top:50px; left:20%;
+    font-family: SCD5; font-size: 18px;
+}
+
+.left_img{
+    position: absolute;
+    top: 130px; left:5%;
+    width: 90%; height: 300px;
+    background-image: url('../imgs/tennine.png');
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+#content_right{
+    position: absolute;
+    width: 62%; height: 600px; left:33%;
+    /* background-color: lightgray; */
+}
+.right_img{
+    position: absolute;
+    width: 100%; height: 500px;
+    /* background-color: lightcoral; */
+    top:50px; left:5%;
+    background-image: url('../imgs/간접흡연.png');
+    background-repeat: no-repeat;
+    background-size: 100%;
+}   
+#left_img_1{
+    background-image: url('../imgs/1_1_\ smokingRate.png');
+    width: 800px; height: 500px; left:15px; top:90px;
+}
+#right_img_1{
+    background-image: url('../imgs/1_2_OECD.png');
+    width: 850px; top:90px; left:-50px;
+}
+
+#left_img_2{
+    background-image: url('../imgs/2_1_cancerPatient.png');
+    top:90px; left:30px; width: 400px; height: 340px;
+}
+#right_img_2{
+    background-image: url('../imgs/2_2_cancerRate.png');
+    width: 670px; height: 310px; left: 100px; top:110px;
+}
+
+.right_text{left:38%;}
+#left_text_1{ left:37%; }
+#right_text_1{ left:30%; }
+#left_text_2{left:60px;}
+#right_text_2{left:330px;}
+#left_text2_2{ z-index:100; top:128%; left:5%; width: 350px; }
+#right_text2_2{top:75%; left:35%;}
+
+.left_text2,.right_text2{
+    position: absolute;
+    text-align: right; padding-right:15px;
+    height: 30px; top:90%; width: 300px; left:60%;
+    font-family: SCD3; font-size: 12px; color:rgb(75, 75, 75);
+}
+#right_text2_1{top:97%;}
+
+#title_text{ 
+    font-size: 12px; 
+    position: absolute;
+    left:85%; top:15px;
 }

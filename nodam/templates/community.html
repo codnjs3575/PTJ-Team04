@@ -7,102 +7,6 @@
     <title>Community</title>
     <link rel="stylesheet" type="text/css" href="../static/resources/css/community.css">
     <script src='../static/resources/js/jquery-3.6.0.min.js'></script>
-    <script>
-                // --------------------------------------------------------------------
-                let xhttp = new XMLHttpRequest();
-
-        xhttp.onreadystatechange = function () {
-            if(xhttp.readyState == 4 && xhttp.status == 200){
-                jsonfunc(this.responseText); //this = xhttp
-        //		jsonfunc(xhttp.responseText); // 둘다 가능
-            }
-        }
-        xhttp.open("GET","../static/resources/crawling/nc_count.json", true);
-        xhttp.send();
-
-        function jsonfunc( jsonText ) {
-            let json = JSON.parse(jsonText); // String -> json으로 변환
-            document.getElementById('count1').innerHTML = json['count1']+'명';
-            document.getElementById('count2').innerHTML = json['count2']+'명';
-        }
-
-        // --------------------------------------------------------------------
-        let xhttp2 = new XMLHttpRequest();
-
-        xhttp2.onreadystatechange = function () {
-            if(xhttp2.readyState == 4 && xhttp2.status == 200){
-                create_list(this.responseText);
-            }
-        }
-        xhttp2.open("GET","../static/resources/crawling/publicHealth.json", true);
-        xhttp2.send();
-
-        function create_list( jsonText ) {
-            let json = JSON.parse(jsonText); // String -> json으로 변환
-            json = json['list']
-
-            var keys = Object.keys(json);
-            var list_ul = document.getElementById('left_list')
-            for(var i = 0; i<keys.length;i++){
-
-                var area = json[keys[i]][0]['area']
-
-                var list_li = document.createElement('li')
-                list_li.innerHTML=area
-                list_li.setAttribute('onclick','search_health('+keys[i]+')')
-                list_ul.appendChild(list_li)
-            }
-        }
-
-        // --------------------------------------------------------------------
-        function search_health(i){
-
-            let xhttp3 = new XMLHttpRequest();
-
-            xhttp3.onreadystatechange = function () {
-                if(xhttp3.readyState == 4 && xhttp3.status == 200){
-                    health(this.responseText,i); //this = xhttp
-                }
-            }
-            xhttp3.open("GET","../static/resources/crawling/publicHealth.json", true);
-            xhttp3.send();
-
-            function health(jsonText,num){
-                let json = JSON.parse(jsonText); // String -> json으로 변환
-                json = json['list']
-                // console.log(json[num])
-                var right_list = document.getElementById('right_list')
-
-                if (right_list.hasChildNodes('tr')){
-                    // console.log(right_list)
-                    var child_tr = document.getElementsByClassName('json_content_tr')
-
-                    while(child_tr.length > 0){
-                        child_tr[0].parentNode.removeChild(child_tr[0]);
-                    }
-                }
-
-                for (var i=0; i<json[num].length;i++){
-
-                    var json_content_tr = document.createElement('tr')
-                    json_content_tr.setAttribute('class','json_content_tr')
-                    json_content_tr.setAttribute('id','tr'+i)
-
-                    td_list = ['public','address','tel']
-
-                    for (var j=0; j<3; j++){
-                        var json_content_td = document.createElement('td')
-                        json_content_td.innerHTML = (json[num][i][td_list[j]])
-                        json_content_tr.appendChild(json_content_td)
-                    }
-
-
-                    // json_content.innerHTML = json[num][i]['tell']
-                    right_list.appendChild(json_content_tr)
-                }
-            }
-        }
-    </script>
 </head>
 <body>
         <!-- page_head -->
@@ -225,16 +129,12 @@
     </div>
 
     <!-- page_foot -->
-    <br>
-    <br>
-    <div class="page_foot">
-        <div id="foot_logo"><img src="..\static\resources\imgs\logo.png" width="100px"></div>
+    <div id="page_foot">
+        <div id="foot_logo"></div> 
         <div id="companyinfo">
             <p id="company_address">(주) 멀캠에서 코딩해조 | 서울특별시 강남구 언주로 508 14층(역삼동, 서울상록빌딩)</p>
             <p id="copyright">Copyright by Multicoding Co., Ltd. All rights reserved.</p>
         </div>
     </div>
-
-
 </body>
 </html>

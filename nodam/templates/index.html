@@ -4,7 +4,7 @@
     <meta charset=" UTF-8">
     <title>노담지킴이</title>
     <link rel="stylesheet" type="text/css" href="../static/resources/css/main.css">
-    <!-- <link href="이미지주소.ico" rel="shortcut icon" type="image/x-icon"> -->
+    <link href="../static/resources/imgs/logo.ico" rel="shortcut icon" type="image/x-icon">
     <script src='../static/resources/js/jquery-3.6.0.min.js'></script>
     <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
@@ -106,12 +106,68 @@
                         json_content_tr.appendChild(json_content_td)
                     }
                     
-
-                    // json_content.innerHTML = json[num][i]['tell']
                     right_list.appendChild(json_content_tr)
                 }
             }
         }
+        $(document).ready(function(){
+            search_health(11);
+            var community = "{{ community|safe }}".replace('>','').split('{')
+            var board_list1 = document.getElementById('board_list1')
+            var board_list2 = document.getElementById('board_list2')
+
+            for (var i=1; i<=5; i++){
+                try{
+                    var community_list = community[i].split('\'')
+                    var myname = community_list[3]
+                    var mytitle = community_list[7]
+                    var mytime = community_list[14].split(',')
+                    var myyear = mytime[0].split('(')[1]
+                    var mymonth = mytime[1]
+                    var myday = mytime[2]
+                    mytime = myyear+'년'+mymonth+'월'+myday+'일'
+                    var mylist = [mytitle,myname,mytime]
+                    // console.log(myname,mytitle,mytime)
+                    var list_tr = document.createElement('div')
+                    list_tr.setAttribute('class','list_tr')
+                    list_tr.setAttribute('id','list_tr'+i)
+                    for (var j=0; j<3; j++){
+                        var list_td = document.createElement('div')
+                        list_td.innerHTML = mylist[j]
+                        list_td.setAttribute('height','10')
+                        list_tr.appendChild(list_td)
+                    }
+                    board_list1.appendChild(list_tr)
+                }catch(error){break;}     
+            }
+
+            var community2 = "{{ community2|safe }}".replace('>','').split('{')
+            for (var i=1; i<=5; i++){
+                try{
+                    var community_list2 = community2[i].split('\'')
+                    var myname = community_list2[3]
+                    var mytitle = community_list2[7]
+                    var mytime = community_list2[14].split(',')
+                    var myyear = mytime[0].split('(')[1]
+                    var mymonth = mytime[1]
+                    var myday = mytime[2]
+                    mytime = myyear+'년'+mymonth+'월'+myday+'일'
+
+                    var mylist = [mytitle,myname,mytime]
+
+                    var list_tr = document.createElement('div')
+                    list_tr.setAttribute('class','list_tr')
+                    list_tr.setAttribute('id','list_tr'+i)
+                    list_tr.setAttribute('height','30')
+                    for (var j=0; j<3; j++){
+                        var list_td = document.createElement('div')
+                        list_td.innerHTML = mylist[j]
+                        list_tr.appendChild(list_td)
+                    }
+                    board_list2.appendChild(list_tr)
+                }catch(error){break;}
+            }
+        })
     </script>
 </head>
 <body>
@@ -156,8 +212,6 @@
             </section>
             <div class="co1"><i class="fas fa-chevron-left fa-4x" id='prev'></i></div>
             <div class="co2"><i class="fas fa-chevron-right fa-4x" id='next'></i></div>
-    
-    
         </div>
 
         <!-- 이쪽 script를 위로 두고 싶었는데 안되네요 ㅠㅠ -->
@@ -199,14 +253,35 @@
                                     
                                     var date_div_title = document.getElementById('user_dday_title')
                                     var date_div = document.getElementById('user_dday')
+                                    var user_img = document.getElementById('user_img')
 
                                     if (resultDate >= 0) {
                                         date_div_title.innerHTML = '노담 시작'
                                         date_div.innerHTML = 'D +'+resultDate;
+                                        if (resultDate >= 372){ // 1년 이상
+                                            user_img.style.backgroundImage = "url('../static/resources/imgs/seed_icon/lv5.png')"
+                                        }else if(resultDate >= 186){ // 6개월 이상
+                                            user_img.style.backgroundImage = "url('../static/resources/imgs/seed_icon/lv4.png')"
+                                        }else if(resultDate >= 31){ // 1개월 이상
+                                            user_img.style.backgroundImage = "url('../static/resources/imgs/seed_icon/lv3.png')"
+                                        }else if(resultDate >= 7){ // 일주일 이상
+                                            user_img.style.backgroundImage = "url('../static/resources/imgs/seed_icon/lv2.png')"
+                                        }
                                     } else{
                                         date_div_title.innerHTML = '노담 시작'
                                         date_div.innerHTML = 'D - '+Math.abs(resultDate);
+                                        user_img.style.backgroundImage = "url('../static/resources/imgs/seed_icon/lv1.png')"
                                     }
+                                        user_img.style.backgroundSize = "70%"
+                                        // user_img.style.backgroundPositionX = '35px'
+                                        user_img.style.border = '1px solid grey'
+                                        user_img.style.borderRadius = '50%'
+                                        user_img.style.width = '200px'
+                                        user_img.style.height = '200px'
+                                        user_img.style.marginLeft = '20px'
+                                        user_img.style.marginTop = '5px'
+                                        user_img.style.backgroundRepeat = 'no-repeat'
+                                        user_img.style.opacity = '1'
                                 </script>
                             {% endif %}
                             
@@ -235,9 +310,24 @@
                 </div>
                 <div id="center02">
                     <div id="hot_board">
-                        <div id="hot_board_img"></div>
-                        <p id="hot_board_title">노담노담</p>
-                        <a href="{% url 'community' %}"><p id="view_all">전체 보기</p></a>
+                        <div id="board_top">
+                            <div id="hot_board_img"></div>
+                            <p id="hot_board_title">노담노담</p>
+                            <a href="{% url 'community' %}"><p id="view_all">전체 보기</p></a>
+                        </div>
+                        <div id="board_body">
+                            <div id="board_body_left">
+                                <div class="board_text" id="board_hit">인 기 게 시 판</div>
+                                <div id="board_list1"></div>
+                            </div>
+                            <div id="board_body_right">
+                                <div class="board_text" id="board_time">최 신 게 시 판</div>
+                                <div id="board_list2"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+
                     </div>
                 </div>
                 <div id="center03">

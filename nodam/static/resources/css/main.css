@@ -26,7 +26,7 @@ a:visited{color:grey; text-decoration: none;}
 #page_body{
     /* background-color: skyblue; */
     position:relative;
-    height: 1300px;
+    height: 1250px;
 }
 #page_foot{
     /* border: 2px solid red; */
@@ -296,21 +296,73 @@ a:visited{color:grey; text-decoration: none;}
     height: 90%; width: 90%;
     margin-left: 35px;    
 }
+#board_top{
+    position: relative;
+    width:100%; height: 10%;
+    /* background-color: aquamarine; */
+}
 #hot_board_title{
-    position:absolute; left:70px; 
-    margin-top:5px;
+    position:absolute; left:45px; top:7px;
     /* top:10px; */
     font-family: SCD4;
 }
 #hot_board_img{
-    position:absolute; 
+    position:absolute; left:10px; top:3px;
     width: 30px; height: 30px;
+    /* background-color: skyblue; */
     background-image: url('../imgs/community.png');
     background-repeat: no-repeat;
     background-size: 100%;
 }
+#board_body{
+    position: relative; top:5%;
+    border: 2px solid grey;
+    width: 100%; height: 77%;
+}
+#board_body_left,#board_body_right{
+    position: absolute;
+    /* background-color: skyblue; */
+    width: 50%; height: 100%;
+}
+.board_text{
+    background-color: rgba(240, 189, 65);
+    font-family: SCD5; font-size: 18px;
+    text-align: center;
+    border-bottom: 2px solid grey;
+    padding-top: 5px; padding-bottom: 5px;
 
-#center03{height: 250px; }
+}
+#board_body_right{ left:50%; border-left: 2px solid grey; }
+#board_time{border-right: 2px solid grey;}
+
+.list_tr{ height: 30px; position:absolute; 
+    width: 100%; border-bottom: 2px solid grey;}
+.list_tr div{ 
+    position: absolute; left:5px; padding-top: 5px;
+
+}
+.list_tr div:first-child{
+    width:210px; height:15px; overflow: hidden;
+    font-family: SCD6; color:rgb(70, 70, 70);
+}
+.list_tr div:nth-child(2){
+    width:30px; left:220px;
+    font-family: SCD3; font-size: 12px; 
+}
+.list_tr div:nth-child(3){
+    width:100px; left:290px;
+    font-family: SCD3; font-size: 12px; 
+}
+#list_tr1{ top:40px;}
+#list_tr2{ top:80px;}
+#list_tr3{ top:120px;}
+#list_tr4{ top:160px;}
+#list_tr5{ top:200px; border-bottom: none;}
+
+
+
+
+#center03{ height: 250px; }
 #search_health{
     border: 2px solid grey;
     margin-left: 35px;    
@@ -402,7 +454,6 @@ a:visited{color:grey; text-decoration: none;}
     width: 80px; height: 80px;
     /* opacity: 0.6; */
 }
-
 #companyinfo{
     position:absolute;
     top:45%; 
@@ -412,8 +463,6 @@ a:visited{color:grey; text-decoration: none;}
     text-align: left; 
     color:grey; 
 }
-/* -------------------------------------------------- */
-
 
 
 /* -------------------login.html------------------------------- */
@@ -460,6 +509,5 @@ a:visited{color:grey; text-decoration: none;}
     top:80%; left:270px;
 }
 #form_signup:hover{color:rgba(240, 189, 65)}
-/* ---------------------clinic.html---------------------- */
 
 

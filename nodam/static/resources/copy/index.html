@@ -200,12 +200,15 @@
     </div>
     <div id="page_body">
         <div id="body_top">
-            <section id="slide">
+            <section class="slide">
                 <div class="inner">
                     <a href="https://nosmk.khealth.or.kr/nsk/ntcc/index.do"><img src="..\static\resources\imgs\slide_pic00.png" id="slide01"></a>
                 </div>
                 <div class="inner2">
                     <a href="https://nosmk.khealth.or.kr/nsk/ntcc/index.do"><img src="..\static\resources\imgs\slide_pic02.png" id="slide02"></a>
+                </div>
+                <div class="inner3">
+                    <a href="https://www.nosmokeguide.go.kr/lay2/bbs/S1T371C388/A/161/view.do?article_seq=790936&cpage=1&rows=10&condition=&keyword=&cat=&rn=2"><img src="..\static\resources\imgs\slide_pic03.png" id="slide03"></a>
                 </div>
             </section>
             <div class="co1"><i class="fas fa-chevron-left fa-4x" id='prev'></i></div>
@@ -215,7 +218,7 @@
         <!-- 이쪽 script를 위로 두고 싶었는데 안되네요 ㅠㅠ -->
         <script type="text/javascript">
             $(document).ready(function(){
-                $('#slide').slick({
+                $('.slide').slick({
                     slide: 'div',		//슬라이드 되어야 할 태그 ex) div, li 
                     infinite : true, 	//무한 반복 옵션	 
                     slidesToShow : 1,		// 한 화면에 보여질 컨텐츠 개수
@@ -332,7 +335,7 @@
                     <div id="search_health">
                         <div id="health_top">
                             <div id="health_img"></div>
-                            <p id="health_title">금연 클리닉 운영 보건소 찾기</p>
+                            <p id="health_title">보건소 찾기</p>
                             <a href="{% url 'clinic' %}"><p id="view_all">전체 보기</p></a>
                         </div>
                         <div id="health_left">
@@ -341,6 +344,7 @@
                         <div id="health_right">
                             <table id="right_list"></table>
                         </div>
+
                     </div>
                 </div>
             </div>
@@ -352,13 +356,13 @@
 
     
     </div> 
-    
+   
     <div class ="banner">
         <div class="banner_postion" id="position1">
             <a href="https://www.nosmokeguide.go.kr/lay2/program/S1T50C9/nosmoke/noSmoke_selftest/noSmoke_selftest1_1q.do#:~:text=%EB%8B%88%EC%BD%94%ED%8B%B4%20%EC%9D%98%EC%A1%B4%EB%8F%84%20%ED%8F%89%EA%B0%80,-%EB%8B%88%EC%BD%94%ED%8B%B4%20%EC%9D%98%EC%A1%B4%EB%8F%84%20%ED%8F%89%EA%B0%80&text=%E2%91%B6%20%EA%B8%88%EC%97%B0%EA%B5%AC%EC%97%AD(%EB%8F%84%EC%84%9C%EA%B4%80%2C%20%EA%B7%B9%EC%9E%A5,%EB%A5%BC%20%EC%B0%B8%EA%B8%B0%EA%B0%80%20%EC%96%B4%EB%A0%B5%EC%8A%B5%EB%8B%88%EA%B9%8C%3F&text=%E2%91%B7%20%ED%95%98%EB%A3%A8%20%EC%A4%91%20%EB%8B%B4%EB%B0%B0%20%EB%A7%9B%EC%9D%B4%20%EA%B0%80%EC%9E%A5%20%EC%A2%8B%EC%9D%80%20%EB%95%8C%EB%8A%94%20%EC%96%B8%EC%A0%9C%EC%9E%85%EB%8B%88%EA%B9%8C%3F&text=%E2%91%B8%20%EC%98%A4%ED%9B%84%EC%99%80%20%EC%A0%80%EB%85%81%EC%8B%9C%EA%B0%84,%EB%A5%BC%20%EB%8D%94%20%EC%9E%90%EC%A3%BC%20%ED%94%BC%EC%9A%B0%EC%8B%AD%EB%8B%88%EA%B9%8C%3F&text=%E2%91%B9%20%EB%AA%B8%EC%9D%B4%20%EC%95%84%ED%8C%8C%20%ED%95%98%EB%A3%A8,%EB%95%8C%EC%97%90%EB%8F%84%20%EB%8B%B4%EB%B0%B0%EB%A5%BC%20%ED%94%BC%EC%9A%B0%EC%8B%AD%EB%8B%88%EA%B9%8C%3F">
-            <img src="..\static\resources\imgs\survey.png" id="nicotin_pic">
-            <p id="nicotine">니코틴 의존도 진단 <br>바로가기</p>
+                <img src="..\static\resources\imgs\survey2.png" id="nicotin_pic">
             </a>
+            <p id="nicotine">니코틴 의존도 진단 <br>바로가기</p>
         </div>
         <div class="banner_postion" id="position2">
             <img src="..\static\resources\imgs\tele.png" id="consulting_pic">
@@ -380,6 +384,8 @@
             <p id="copyright">Copyright by Multicoding Co., Ltd. All rights reserved.</p>
         </div>
     </div>
+
+
        
 </body>
 </html>

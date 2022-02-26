@@ -15,7 +15,7 @@
         function dash2(){location.href = '{% url "dashboard2" %}';}
         function dash3(){location.href = '{% url "dashboard3" %}';}
         function dash4(){location.href = '{% url "dashboard4" %}';}
-        
+        function dash5(){location.href = '{% url "dashboard5" %}';}
     </script>
 </head>
 <body>
@@ -55,6 +55,7 @@
                 <div class="dashboard_btns"><button id="dashboard2" onclick="dash2();" style="background-color: rgba(240, 189, 65); font-family: SCD6; color:black">대시보드 2</button></div>
                 <div class="dashboard_btns"><button id="dashboard3" onclick="dash3();">대시보드 3</button></div>
                 <div class="dashboard_btns"><button id="dashboard4" onclick="dash4();">대시보드 4</button></div>
+                <div class="dashboard_btns"><button id="dashboard5" onclick="dash5();">대시보드 5</button></div>
             </div>
 
             <!-- 대쉬보드 내용  -->
@@ -62,11 +63,13 @@
                 <div id="content_title"> 흡연과 폐암의 관련성 </div>
                 <div id="content_left">
                     <div class="left_text" id="left_text_2">그림 1. 폐암 환자의 과거 흡연 여부 통계</div>
+                    <div class="left_text3" id="left_text3_2">◦ 폐암 환자 중 남성은 28.52%, 여성은 9.17%가 과거 흡연 경험이 있음</div>
                     <div class='left_img' id="left_img_2"></div>
                     <div class="left_text2" id="left_text2_2">< 출처 : 국립암센터_폐암 라이브러리 환자 현재 흡연 여부 > </div>
                 </div>
                 <div id="content_right">
                     <div class="right_text" id="right_text_2">그림 2. 주요 암으로 인한 사망자 수 통계 </div>
+                    <div class="right_text3" id="right_text3_2">◦ 최근 5년동안 주요 암 중 폐암으로 인한 사망자 수가 가장 많은 비중을 차지함</div>
                     <div class='right_img' id="right_img_2"></div>
                     <div class="right_text2" id="right_text2_2">< 출처 : 보건복지부 암등록통계 ></div>
                 </div>

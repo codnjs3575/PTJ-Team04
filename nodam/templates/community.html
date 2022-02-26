@@ -42,12 +42,12 @@
 
     <!-- page_body -->
     <div id="page_body">
-        <div id="community_page_top">
+        <div class="community_page_top">
             <div id="top_title">노담노담 커뮤니티</div>
             <div id="top_text">#담배는 노답, #나는 노담! 우리 함께 이겨냅시다!</div>
         </div>
 
-        <div id="community_page_center">
+        <div class="community_page_center">
             <div id="center_table">
                 <div id="table_title">
                     <div class="table_title_list" id="title0">번호</div>
@@ -78,7 +78,36 @@
         </div>
 
         <!-- 버튼 -->
-        <div id="community_page_bottom">
+        <div class="community_page_bottom">
+            <div id="bottom_button">
+                <a href="?page=1" class="button1">처음</a>
+                <!-- 이전 페이지 -->
+                {% if list.has_previous %}
+                    <a href="?page={{list.previous_page_number}}">이전</a>
+                {% else %}
+                    <a>이전</a>
+                {% endif%}
+
+                <!-- 페이징 -->
+                {% for page_num in list.paginator.page_range %}
+                    {% if page_num == list.number %}
+                        <b>{{ page_num }}</b>
+                    {% else %}
+                        <a href="?page={{ page_num }}">{{ page_num }}</a>
+                    {% endif %}
+                {% endfor %}
+
+                <!-- 다음 페이지 -->
+                {% if list.has_next %}
+                    <a href="?page={{ list.next_page_number }}">다음</a>
+                {% else %}
+                    <a>다음</a>
+                {% endif %}
+
+                <!-- 끝으로 -->
+                <a href="?page={{ list.paginator.num_pages }}" class="button1">끝</a>
+            </div>
+
 
         </div>
     </div>

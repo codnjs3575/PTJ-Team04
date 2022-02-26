@@ -16,7 +16,6 @@
         function dash3(){location.href = '{% url "dashboard3" %}';}
         function dash4(){location.href = '{% url "dashboard4" %}';}
         function dash5(){location.href = '{% url "dashboard5" %}';}
-        function dash5(){location.href = '{% url "dashboard5" %}';}
     </script>
 </head>
 <body>
@@ -47,7 +46,7 @@
             </ul>
         </div>
     </div>
-    <div id="page_body" style="height: 650px;">
+    <div id="page_body" style="height: 1300px;">
         
         <div id="dashboard_body">
             <!-- 대쉬보드 버튼  -->
@@ -55,28 +54,32 @@
                 <div class="dashboard_btns"><button id="dashboard1" onclick="dash1();">대시보드 1</button></div>
                 <div class="dashboard_btns"><button id="dashboard2" onclick="dash2();">대시보드 2</button></div>
                 <div class="dashboard_btns"><button id="dashboard3" onclick="dash3();">대시보드 3</button></div>
-                <div class="dashboard_btns"><button id="dashboard4" onclick="dash4();" style="background-color: rgba(240, 189, 65); font-family: SCD6; color:black">대시보드 4</button></div>
-                <div class="dashboard_btns"><button id="dashboard5" onclick="dash5();">대시보드 5</button></div>
+                <div class="dashboard_btns"><button id="dashboard4" onclick="dash4();">대시보드 4</button></div>
+                <div class="dashboard_btns"><button id="dashboard5" onclick="dash5();" style="background-color: rgba(240, 189, 65); font-family: SCD6; color:black">대시보드 5</button></div>
             </div>
 
             <!-- 대쉬보드 내용  -->
-            <div id="dashboard_body_cotent" style="width:1200px; height: 510px; left:-200px;">
-                <div id="content_title">서울시 간접흡연 실태</div>
-                <div id="content_left">
-                    <div class='left_text' id="left_text_4">그림 1. 서울시 간접흡연 경험인구 통계</div>
-                    <div class="left_text3" id="left_text3_4">◦ 한국보건사회연구원에서 19~49세 성인 남녀 5,280명을 대상으로 조사한 결과,
-                        <p id="text3_4_1">성인 응답자 10명 중 9명은 길거리 간접흡연으로 인한 피해 경험이 있음</p></div>
-                    <div class='left_img' id="left_img_4"></div>
-                    <div class="left_text2" id="left_text2_4">< 출처 : 한국보건사회연구원> </div>
+            <div id="dashboard_body_cotent" style="height: 1150px;">
+                <div id="content_title">서울시 자치구별 흡연 실태</div>
+                <div id="content1">
+                    <div class="left_text" id="left_text_5"> 그림 1. 서울시 자치구별 천 명당 흡연시설 수 </div>
+                    <div class="left_text3" id="left_text3_5">◦ 서울시 자치구별 흡연율은 약 12%~19%로 자치구별 편차가 크지 않음</div>
+                    <div class='left_img' id="left_img_5"></div>
+                    <div class="left_text2" id="left_text2_5">< 출처 : 2020년 서울시 지역사회 건강통계 ></div>
                 </div>
-                <div id="content_right">
-                    <div class='right_text' id="right_text_4">그림 2. 서울시 직장/가정실내 간접흡연 노출률 통계</div>
-                    <div class="right_text3" id="right_text3_4">◦ 현재 비흡연자 중 ‘강북구’에서 직장 실내 간접흡연 노출률(5.3%)과 가정 실내 간접흡연 노출률(15%)이 가장 높음</div>
-                    <div class="right_img" id="right_img_4"></div>
-                    <div class="right_text2" id="right_text2_4">< 출처 : 서울특별시 시민건강국 보건의료정책과></div>
+                <div id="content2">
+                    <div class="right_text" id="right_text_5">그림 2. 서울시 자치구별 흡연율</div>
+                    <div class="right_text3" id="right_text3_5">◦ 서울시 자치구별 흡연률은 큰 편차를 보이지 않는 반면(<그림 1> 참조), 자치구별 천 명당 흡연시설 수의 편차는 매우 큼
+                        <p> 천 명당 흡연시설 수는 광진구(약 0.7개)에 가장 많이 분포되어 있고, 동작구(약 0.002개)는 가장 적게 분포되어 있음</p> </div>
+                    <div class='right_img' id="right_img_5"></div>
+                    <div class="right_text2" id="right_text2_5">< 출처 : 2020~2021년 서울특별시 흡연시설 현황 ></div>
                 </div>
             </div>
+        
         </div>
+
+        
+        
     </div>
 
     <div id="page_foot">
@@ -86,5 +89,6 @@
             <p id="copyright">Copyright by Multicoding Co., Ltd. All rights reserved.</p>
         </div>
     </div>
+        
 </body>
 </html>

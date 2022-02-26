@@ -45,6 +45,7 @@ def dashboard1(requests): return render(requests,'dashboard1.html')
 def dashboard2(requests): return render(requests,'dashboard2.html')
 def dashboard3(requests): return render(requests,'dashboard3.html')
 def dashboard4(requests): return render(requests,'dashboard4.html')
+def dashboard5(requests): return render(requests,'dashboard5.html')
 
 
 def signup(request):

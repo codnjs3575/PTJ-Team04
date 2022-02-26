@@ -39,5 +39,6 @@ urlpatterns = [
     path('dashboard2/', views.dashboard2, name='dashboard2'),
     path('dashboard3/', views.dashboard3, name='dashboard3'),
     path('dashboard4/', views.dashboard4, name='dashboard4'),
+    path('dashboard5/', views.dashboard5, name='dashboard5'),
     
 ]

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>노담지킴이</title>
+    <link href="../static/resources/imgs/logo.ico" rel="shortcut icon" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="../static/resources/css/update.css">
+    <script src='../static/resources/js/jquery-3.6.0.min.js'></script>
+</head>
+<body>
+    <!-- page_head -->
+    <div id="page_head">
+      <div id="head_logo"></div>
+      <div id="head_title">
+          <div id="head_quote">" 나는 네가 <p>#노담</p>이면 좋겠어 "</div>
+          <div id="head_signup">
+              {% if not request.session.username %}
+                  <a href="{% url 'signup' %}"><span> 회원가입 </span></a>
+                  <a href="{% url 'login' %}"><span> 로그인 </span></a>
+              {% else %}
+                  <a href="{% url 'logout' %}"><span id="logout_text"> 로그아웃 </span></a>
+              {% endif %}
+          </div>
+      </div>
+
+      <div id="head_menu">
+          <ul>
+              <div id="submenus">
+                  <a href="{% url 'index' %}"><ol class="submenu" style="color:rgba(240, 189, 65);">메인</ol></a>
+                  <a href="{% url 'smokingmap' %}"><ol class="submenu">흡연/금연구역</ol></a>
+                  <a href="{% url 'clinic' %}"><ol class="submenu">금연 클리닉</ol></a>
+                  <a href="{% url 'community' %}"><ol class="submenu">커뮤니티</ol></a>
+                  <a href="{% url 'dashboard' %}"><ol class="submenu">대시보드</ol></a>
+              </div>
+          </ul>
+      </div>
+    </div>
+
+    <!-- page_body -->
+    <div class="page_body1">
+      <br>
+      <div class="main_title">
+        <h1 id="title"><p id="title01">#노담노담</p> 글 수정</h1>
+      </div>
+      <br>
+      <p id="nodam_quote">#담배는 노답, #나는 노담! 우리 함께 이겨냅시다!</p>
+      <br>
+      <p id="caution">
+          * 저속한 표현, 타인의 명예훼손, 상업성, 불 건전한 내용의 게시글을 게시할 경우 <br>
+          임의로 삭제될 수 있으며 노담노담 커뮤니티 서비스 이용에 불이익이 갈 수 있음을 알려드립니다.
+      </p>
+      <br>
+    </div>
+
+
+
+  <!-- page_body2 -->
+  <div class="page_body2">
+    <form action="/updateres/" method="post">{% csrf_token %}
+      <input type="hidden" name="id" value="{{dto.id}}">
+      <table border="1" id="post_info">
+        <tr>
+          <th>작성자</th>
+          <td>{{request.session.username}}</td>
+        </tr>
+        <tr>
+          <th>제목</th>
+          <td><input type="text" name="mytitle" value="{{dto.mytitle}}" id="post_title"></td>
+        </tr>
+        <tr>
+          <th>내용</th>
+          <td><textarea name="mycontent" cols="60" rows="10">{{dto.mycontent}}</textarea></td>
+        </tr>
+        <tr>
+          <td colspan="2" align="right">
+            <input type="button" value="취소" onclick="location.href='/detail/{{ dto.id }}'">
+            <input type="submit" value="수정">
+          </td>
+        </tr>
+      </table>
+    </form>
+  </div>
+
+  <!-- page_foot -->
+  <br>
+  <br>
+  <div class="page_foot">
+      <div id="foot_logo"><img src="..\static\resources\imgs\logo.png" width="100px"></div>           
+      <div id="companyinfo">
+          <p id="company_address">(주) 멀캠에서 코딩해조 | 서울특별시 강남구 언주로 508 14층(역삼동, 서울상록빌딩)</p>
+          <p id="copyright">Copyright by Multicoding Co., Ltd. All rights reserved.</p>
+      </div>
+  </div>
+
+
+</body>
+</html>

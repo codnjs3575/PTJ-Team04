@@ -1,15 +1,31 @@
-#page_body{ height: 700px; width: 1300px; }
+#page_body{ height: 800px; width: 1400px; }
 /* ------------------------------------------------------------------ */
-#community_page_top{
+#bottom_button{
+    text-align: center;
+    /* background-color: red; */
+    width: 100%; height: 30px;
+    font-size: 17px; font-family: SCD5;
+}
+.button1{
+    color:black;
+}
+
+/* ------------------------------------------------------------------ */
+.community_page_top{
     position: absolute;
     height: 120px; width: 900px; left:250px; top: 60px;
     border: 3px solid black;
     border-left: none; border-right: none;
 }
-#community_page_center{
+.community_page_center{
     position: absolute;
     height: 500px; width: 900px;
     left:250px; top:190px;
+}
+.community_page_bottom{
+    position: absolute;
+    height: 30px; width:900px;
+    left:250px; top:700px;
 }
 /* ------------------------------------------------------------------ */
 #top_title{ color:rgb(245, 183, 27); font-family: SCD6; font-size: 30px; position: absolute; top:25px; left:38%; }
@@ -85,15 +101,124 @@
     border-radius: 5px;
 }
 #button_insert:hover{
-    color:rgb(114, 114, 114);
+    color:white;
 }
 
 /* ------------------------------------------------------------------ */
+/* ------------------------------------------------------------------ */
+
+/* 커뮤니티 텍스트 */
+#page_top_insert{ height: 100px; }
+/* ------------------------------------------------------------------ */
+#page_center_insert{
+    /* background-color: skyblue; */
+    top:165px; height: 600px;
+}
+/* 루트 div 3개 (작성자, 제목, 내용) */
+#insert_name,#insert_title,#insert_content{
+    position: absolute; top:10px;
+    width: 100%; height: 30px;
+    border-bottom: 2px solid grey;
+    padding-top: 5px; padding-bottom: 4px;
+}
+/* 테이블 왼쪽 제목 3개(작성자, 제목, 내용) */
+#insert_name_text,#insert_title_text,#insert_content_text{
+    position: absolute;
+    width: 150px; height: 100%;
+    font-family: SCD5; font-size: 18px;
+    /* background-color: lightgreen; */
+    text-align: center;
+}
+/* 테이블 오른쪽 1,2번째 내용 */
+#insert_name_text2,#insert_title_text2,#insert_content_text2{
+    position: absolute; left:150px;
+    width: 500px; height: 100%; 
+    font-family: SCD5;
+    /* background-color: red; */
+}
+
+/* 테이블 2번째 '제목' */
+#insert_title{ margin-top: 15px; top:40px; }
+/* 테이블 2번째 내용 왼쪽 */
+#insert_title_text{padding-top: 3px;}
+/* 테이블 2번째 내용 오른쪽 */
+#insert_title_text2{ top:3px; height: 30px; }
+#title_text2_mytitle{ height: 25px; width:600px; font-family: SCD5; font-size: 17px; }
+
+
+/* 테이블 3번째 '내용' */
+#insert_content{ top: 95px; height: 400px; }
+/* 테이블 3번째 내용 왼쪽 */
+#insert_content_text{padding-top: 170px; }
+/* 테이블 3번째 내용 오른쪽 */
+#insert_content_text2{ padding-top: 15px; }
+#content_text2_mycontent{ 
+    text-align: left; font-size: 15px;
+    padding-left: 10px; padding-top: 10px;
+    height: 350px; width: 700px;
+}
+/* ------------------------------------------------------------------ */
+#page_bottom_button{
+    /* background-color: red; */
+    height: 100px; top:670px;
+}
+#bottom_buttons{
+    /* background-color: lightgreen; */
+    position: absolute;
+    width: 400px; height: 60px;
+    left: 250px; top: 10px;
+}
+
+#bottom_btn1,#bottom_btn2{
+    /* background-color: red; */
+    position: absolute;
+    width: 100px; height: 60px;
+    left:90px;
+}
+#bottom_btn2{ left:50%; }
+
+#btn1_submit,#btn2_cancle{ 
+    width: 80px; height: 35px;
+    position: absolute;
+    left:10px; top:10px;
+    border: 1px solid grey;
+    border-radius: 10px;
+    background-color: white;
+    font-family: SCD5; font-size: 16px;
+}
+#btn1_submit{background-color: rgb(243, 198, 84); color:black;}
+#btn1_submit:hover{color:white;}
+#btn2_cancle:hover{color:red;}
+
 
 
 
 /* ------------------------------------------------------------------ */
+/* ----------------------------detail.html---------------------------- */
+#insert_view{
+    /* background-color: red; */
+    position: absolute;
+    left:600px; top:-9px;
+    width: 300px; height: 45px;
+}
+#view_text{
+    position: absolute;
+    /* background-color: skyblue; */
+    font-family: SCD5; font-size: 18px;
+    text-align: center;
+    width: 120px; height: 30px; top:13px;
+    z-index: 100;
+}
+#view_text2{
+    /* background-color: red; */
+    width: 120px; height: 30px;
+    position: absolute;
+    left:120px; top:15px;
+    text-align: center;
+}
 
 
+
+/* ------------------------------------------------------------------ */
 
 

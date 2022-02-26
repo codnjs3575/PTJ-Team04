@@ -15,7 +15,7 @@
         function dash2(){location.href = '{% url "dashboard2" %}';}
         function dash3(){location.href = '{% url "dashboard3" %}';}
         function dash4(){location.href = '{% url "dashboard4" %}';}
-        
+        function dash5(){location.href = '{% url "dashboard5" %}';}
     </script>
 </head>
 <body>
@@ -54,11 +54,12 @@
                 <div class="dashboard_btns"><button id="dashboard2" onclick="dash2();">대시보드 2</button></div>
                 <div class="dashboard_btns"><button id="dashboard3" onclick="dash3();" style="background-color: rgba(240, 189, 65); font-family: SCD6; color:black">대시보드 3</button></div>
                 <div class="dashboard_btns"><button id="dashboard4" onclick="dash4();">대시보드 4</button></div>
+                <div class="dashboard_btns"><button id="dashboard5" onclick="dash5();">대시보드 5</button></div>
             </div>
 
             <!-- 대쉬보드 내용  -->
             <div id="dashboard_body_cotent" style="height: 780px;">
-                <div id="content_title">서울시 금연구역 <p id="title_text">< 출처 : 지역사회 건강통계 ></p> </div>
+                <div id="content_title">서울시 금연구역 <p>< 출처 : 지역사회 건강통계 ></p> </div>
                 <div id="db3"></div>
                 <!-- <p>설명</p> -->
            

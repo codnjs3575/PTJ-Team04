@@ -1,0 +1,46 @@
+/* -------------------login.html------------------------------- */
+#login_page_body{ position:relative; height: 570px; }
+#login_page_foot{
+    position:relative;
+    height: 90px;
+    width:1400px;
+}
+#login_form{
+    position:absolute;
+    border: 1px solid rgb(177, 177, 177);
+    border-radius: 10px;
+    width: 600px; height: 400px;
+    left: 30%; top:10%;
+}
+
+#form_id,#form_pw,#form_login,#form_text{
+    position: absolute;
+    width: 600px; height: 60px; 
+    top:20%;
+    text-align: center;
+}
+#form_text{
+    top:10%; font-family: SCD7; font-size: 20px;
+}
+#login_user_name,#login_user_password{ 
+    width: 250px; height: 40px; 
+    font-size: 17px;
+    padding-left: 10px;
+    font-family: SCD4;
+}
+#login_user_name::placeholder, #login_user_password::placeholder{ text-align: center; }
+#form_pw{ top:35%; }
+#form_login{top:60%;}
+#login_btn{ 
+    width: 265px; height: 40px; 
+    background-color: rgba(240, 189, 65,0.7);
+    border: none;
+}
+#login_btn:hover{background-color: rgba(240, 189, 65);}
+#form_signup{
+    position: absolute;
+    top:80%; left:270px;
+}
+#form_signup:hover{color:rgba(240, 189, 65)}
+
+

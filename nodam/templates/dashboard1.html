@@ -15,7 +15,7 @@
         function dash2(){location.href = '{% url "dashboard2" %}';}
         function dash3(){location.href = '{% url "dashboard3" %}';}
         function dash4(){location.href = '{% url "dashboard4" %}';}
-        
+        function dash5(){location.href = '{% url "dashboard5" %}';}
     </script>
 </head>
 <body>
@@ -55,18 +55,21 @@
                 <div class="dashboard_btns"><button id="dashboard2" onclick="dash2();">대시보드 2</button></div>
                 <div class="dashboard_btns"><button id="dashboard3" onclick="dash3();">대시보드 3</button></div>
                 <div class="dashboard_btns"><button id="dashboard4" onclick="dash4();">대시보드 4</button></div>
+                <div class="dashboard_btns"><button id="dashboard5" onclick="dash5();">대시보드 5</button></div>
             </div>
 
             <!-- 대쉬보드 내용  -->
             <div id="dashboard_body_cotent" style="height: 1150px;">
                 <div id="content_title">국내 흡연 실태</div>
                 <div id="content1">
-                    <div class="left_text" id="left_text_1">그림 1. 남녀별 흡연율 통계 </div>
+                    <div class="left_text" id="left_text_1"> 그림 1. 남녀별 흡연율 통계 </div>
+                    <div class="left_text3" id="left_text3_1">◦ 한국 성인(만 20세 이상)의 흡연율은 2020년 현재 20.6%이며 성인 남성 중 흡연자 비율은 34.0%, 성인 여성 중 흡연자 비율은 6.6%로 큰 차이를 나타냄</div>
                     <div class='left_img' id="left_img_1"></div>
                     <div class="left_text2" id="left_text2_1">< 출처 : 보건복지부 질병관리청 ></div>
                 </div>
                 <div id="content2">
                     <div class="right_text" id="right_text_1">그림 2. OECD 국가들의 남성 흡연율 통계</div>
+                    <div class="right_text3" id="right_text3_1">◦ 2020년 OECD 남성(만 15세 이상) 기준, 한국의 남성 흡연율이 28.5%로 OECD 36개국 중 5위 차지함 (OECD 평균 20.3%)</div>
                     <div class='right_img' id="right_img_1"></div>
                     <div class="right_text2" id="right_text2_1">< 출처 : 경제협력개발기구(OECD) ></div>
                 </div>

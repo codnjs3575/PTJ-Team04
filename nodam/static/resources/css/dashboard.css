@@ -108,8 +108,10 @@
 #right_text_1{ left:30%; }
 #left_text_2{left:60px;}
 #right_text_2{left:330px;}
-#left_text2_2{ z-index:100; top:128%; left:5%; width: 350px; }
-#right_text2_2{top:75%; left:35%;}
+#left_text2_2{ z-index:100; top:128%; left:25%; width: 350px; }
+#right_text2_2{top:75%; left:63%;}
+#left_text2_4{ top:117%; left:52%; width:170px; }
+#right_text2_4{z-index: 100; top:72%; left:57%;}
 
 .left_text2,.right_text2{
     position: absolute;
@@ -122,5 +124,5 @@
 #title_text{ 
     font-size: 12px; 
     position: absolute;
-    left:85%; top:15px;
+    left:82%; top:15px;
 }

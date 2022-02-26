@@ -3,11 +3,13 @@
 <head>
     <meta charset=" UTF-8">
     <title>노담지킴이</title>
+    <link href="../static/resources/imgs/logo.ico" rel="shortcut icon" type="image/x-icon">
     <link rel="stylesheet" type="text/css" href="../static/resources/css/main.css">
     <link rel="stylesheet" type="text/css" href="../static/resources/css/clinic.css">
     <script src='../static/resources/js/jquery-3.6.0.min.js'></script>
     <script>
     //--------------------------------------------------------------------------
+        
         let xhttp2 = new XMLHttpRequest();
         
         xhttp2.onreadystatechange = function () {
@@ -84,7 +86,7 @@
                 }
             }
         }
-        
+        search_health(11);
     </script>
 </head>
 <body>
@@ -93,9 +95,12 @@
             <div id="head_logo"><img src="../static/resources/imgs/logo.png" width="120px"></div>
             <div id="head_quote">" 나는 네가 <p>#노담</p>이면 좋겠어 "</div>
             <div id="head_signup">
-                <a href="{% url 'signup' %}"><span> 회원가입 </span></a>
-                <span>/</span>
-                <a href="{% url 'login' %}"><span> 로그인 </span></a>
+                {% if not request.session.username %}
+                    <a href="{% url 'signup' %}"><span> 회원가입 </span></a>
+                    <a href="{% url 'login' %}"><span> 로그인 </span></a>
+                {% else %}
+                    <a href="{% url 'logout' %}"><span id="logout_text"> 로그아웃 </span></a>
+                {% endif %}
             </div>
         </div>
 
@@ -161,7 +166,6 @@
     var select1 = document.getElementById('select_area')
         // console.log(select1)
         $('select').on("change",function(){
-            // console.log($(this).val())
             search_health($(this).val())
         })
 </script>

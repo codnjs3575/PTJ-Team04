@@ -35,6 +35,7 @@ def smokingmap(requests):
 def clinic(requests): 
     if (requests.session.get('username')):
         user_id = requests.session.get('username')
+        print(user_id)
         user = SignUp.objects.get(userID=user_id)
         return render(requests,'clinic.html',{'userinfo':user})
     else :

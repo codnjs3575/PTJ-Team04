@@ -25,7 +25,7 @@
 }
 #form1 div input, #form2 div input, #form3 div input{
     position: absolute;
-    width:300px; height: 40px; padding-left: 15px; 
+    width:300px; height: 30px; padding-left: 15px; 
     left: 130px; top:-10px;
     font-size: 17px;
 }
@@ -33,6 +33,23 @@
 #form_pw{ top:100px; }
 #form_pw2{ top:170px; }
 
+
+
+#alert-success{ top: 29px; font-size: 13px; 
+    position: absolute;
+    width: 300px;
+    height: 30px;
+    padding-left: 15px;
+    left: 184px;
+    top: 260px;}
+
+#alert-danger{ top: 29px; font-size: 13px; 
+    position: absolute;
+    width: 300px;
+    height: 30px;
+    padding-left: 15px;
+    left: 184px;
+    top: 260px; }
 
 #form2{ top:280px; height: 320px; }
 #form2 select { position: absolute; left: 130px; top: -5px; width:50px; height: 30px; }
@@ -57,3 +74,4 @@
 #form_submit input:hover{ background-color: rgba(240, 189, 65);}
 #form_cancle input{ margin-left: 20px; }
 #form_cancle input:hover { margin-left: 20px; background-color: rgba(177,177,177,0.5) ; }
+

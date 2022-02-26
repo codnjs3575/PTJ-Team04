@@ -1,10 +1,8 @@
-<!-- <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html lang="en">
 <head>
     <meta charset=" UTF-8">
     <title>노담지킴이</title>
-    <link href="../static/resources/imgs/logo.ico" rel="shortcut icon" type="image/x-icon">
-    <link rel="stylesheet" type="text/css" href="../static/resources/css/main.css">
     <link rel="stylesheet" type="text/css" href="../static/resources/css/map.css">
     <script src='../static/resources/js/jquery-3.6.0.min.js'></script>
     <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
@@ -18,23 +16,22 @@
         $(document).ready(function(){
             document.getElementById('mapdiv').innerHTML='<object width="100%" height="635px" type="text/html" data="../static/resources/html/히트맵.html"></object>';
             document.getElementById('map_content').innerText='서울시의 흡연구역은 중랑구, 광진구, 은평구가 가장 많습니다.'
-            document.getElementById('map_head_content').innerText='히 트 맵'
+            document.getElementById('map_head_content').innerText='히트맵'
             $('.godwjdrn').change(function(){
                 document.getElementById('mapdiv').innerHTML='';
                 var value_name = $('option:selected', this).text();
+                //console.log(value_name)
                 document.getElementById('mapdiv').innerHTML='<object width="100%" height="600px" type="text/html" data="../static/resources/html/'+value_name+'.html"></object>';
                 if (value_name == '서울시'){
-                    document.getElementById('map_head_content').innerHTML='흡연구역 지도';
-                    document.getElementById('map_content').innerHTML='총 322개'
+                    document.getElementById('map_content').innerText='서울시에 있는 흡연구역은 총 322개있습니다.'
                 } else if (value_name=='서울시 금연구역'){
-                        document.getElementById('map_content').innerHTML='총 5292개'
-                        document.getElementById('map_head_content').innerHTML='금연구역 지도';
+                        document.getElementById('map_content').innerText='서울시에 있는 금연구역은 총 5292개가 있습니다'
+                        document.getElementById('map_head_content').innerText='금연구역 지도';
                     }  else if (value_name=='히트맵'){
                         //document.getElementById('map_content').innerText='금연구역 설명'
-                        document.getElementById('map_head_content').innerText='히 트 맵';
-                        document.getElementById('map_content').innerText='서울시의 흡연구역은 중랑구, 광진구, 은평구가 가장 많습니다.'
+                        document.getElementById('map_head_content').innerText='히트맵';
                     }else {
-                        document.getElementById('map_head_content').innerHTML='흡연구역 지도';
+                        document.getElementById('map_head_content').innerText='흡연구역 지도';
                         var dict_gu = {}
                         dict_gu['강남구'] = '2';
                         dict_gu['강동구'] = '0';
@@ -58,9 +55,11 @@
                         dict_gu['중구'] = '5';
                         dict_gu['중랑구'] = '56';
                         
-                        document.getElementById('map_content').innerText='총 '+dict_gu[value_name]+'개';
+                        document.getElementById('map_content').innerText=value_name+'에는 흡연구역은 총 '+dict_gu[value_name]+'개 있습니다';
                     }
+
                 })
+                //if value_name == ['히트맵']
             })
 
 
@@ -94,53 +93,64 @@
         </div>
     </div>
 
-    <div id='page_body' style="height: 870px;" >
-        <div id="body_center">
-            <!-- 제목 -->
-            <div id='map_head_content'></div> 
-            <div>
-                <div class='select_div'>
-                    <select class="godwjdrn" style="height: 40px;">
-                        <optgroup label="서울시히트맵">
-                            <option value="흡연구역히트맵" selected>히트맵</option>
-                        </optgroup>
-                        <optgroup label="흡연구역">
-                            <option value="서울시">서울시</option>
-                            <option value="강남구">강남구</option>
-                            <option value="강북구">강북구</option>
-                            <option value="강서구">강서구</option>
-                            <option value="관악구">관악구</option>
-                            <option value="광진구">광진구</option>
-                            <option value="구로구">구로구</option>
-                            <option value="노원구">노원구</option>
-                            <option value="동대문구">동대문구</option>
-                            <option value="동작구">동작구</option>
-                            <option value="마포구">마포구</option>
-                            <option value="서대문구">서대문구</option>
-                            <option value="서초구">서초구</option>
-                            <option value="성동구">성동구</option>
-                            <option value="송파구">송파구</option>
-                            <option value="양천구">양천구</option>
-                            <option value="영등포구">영등포구</option>
-                            <option value="용산구">용산구</option>
-                            <option value="은평구">은평구</option>
-                            <option value="중구">중구</option>
-                            <option value="중랑구">중랑구</option>
-                        </optgroup>
-                        <optgroup label="금연구역">
-                            <option value="서울시금연구역">서울시 금연구역</option>
-                        </optgroup>
-                    </select>
+        <div id='body_bottom'>
+            <div id="body_center">
+                <div id='body_bottom'>
+                    <div id="body_center">
+                        <br>
+                        <br>
+                        <div id='map_head_content'></div>
+                        <br>
+                        <div>
+                            <div class='select_div'>
+                                <select class="godwjdrn" >
+                                    <optgroup label="서울시히트맵">
+                                        <option value="흡연구역히트맵" selected>히트맵</option>
+                                    </optgroup>
+                                    <optgroup label="흡연구역">
+                                        <option value="서울시">서울시</option>
+                                        <option value="강남구">강남구</option>
+                                        <option value="강북구">강북구</option>
+                                        <option value="강서구">강서구</option>
+                                        <option value="관악구">관악구</option>
+                                        <option value="광진구">광진구</option>
+                                        <option value="구로구">구로구</option>
+                                        <option value="노원구">노원구</option>
+                                        <option value="동대문구">동대문구</option>
+                                        <option value="동작구">동작구</option>
+                                        <option value="마포구">마포구</option>
+                                        <option value="서대문구">서대문구</option>
+                                        <option value="서초구">서초구</option>
+                                        <option value="성동구">성동구</option>
+                                        <option value="송파구">송파구</option>
+                                        <option value="양천구">양천구</option>
+                                        <option value="영등포구">영등포구</option>
+                                        <option value="용산구">용산구</option>
+                                        <option value="은평구">은평구</option>
+                                        <option value="중구">중구</option>
+                                        <option value="중랑구">중랑구</option>
+                                    </optgroup>
+                                    <optgroup label="금연구역">
+                                        <option value="서울시금연구역">서울시 금연구역</option>
+                                    </optgroup>
+                            </select>
+                        </div>
+                        <br>
+                        <div id='map_content'></div>
+                        <br>
+                        <div class="mapdiv" id="mapdiv">
+                
+                        </div>
+                        <br>
+                        <br>
+            
+                    </div>
                 </div>
             </div>
-            <div id='map_content'></div>
-            <div id='map_content2'></div>
         </div>
-        <div id="body_map">
-            <div class="mapdiv" id="mapdiv"></div>
-        </div>
-    </div>
 
+    
+    </div> 
     <div id="page_foot">
         <div id="foot_logo"></div> 
         <div id="companyinfo">
@@ -148,5 +158,6 @@
             <p id="copyright">Copyright by Multicoding Co., Ltd. All rights reserved.</p>
         </div>
     </div>
+       
 </body>
 </html>

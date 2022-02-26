@@ -3,6 +3,7 @@
 <head>
     <meta charset=" UTF-8">
     <title>노담지킴이</title>
+    <link href="../static/resources/imgs/logo.ico" rel="shortcut icon" type="image/x-icon">
     <link rel="stylesheet" type="text/css" href="../static/resources/css/main.css">
     <link rel="stylesheet" type="text/css" href="../static/resources/css/signup.css">
     <script src='../static/resources/js/jquery-3.6.0.min.js'></script>
@@ -11,7 +12,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
 
 
-    <script 'type= text/javascript>
+    <script type= text/javascript>
         $(function(){
             $("#alert-success").hide();
             $("#alert-danger").hide();
@@ -71,14 +72,15 @@
                 <div id="form_text">  회  원  가  입  </div>
                 <div id="form1">
                     <div id="form_id"> 아 이 디 <input id="user_id" name="userID" placeholder=" 사용할 아이디를 입력하세요."></input></div>
-
                     <div id="form_pw"> 비밀번호 <input type="password" id='user_pw' name="userPW1"></input></div>
-                    <div id="form_pw2"> 비밀번호 재확인 <input type="password", id='user_pw2' class="pw"> 
-                        <div class="alert alert-success" id="alert-success">비밀번호가 일치합니다.</div> 
-                        <div class="alert alert-danger" id="alert-danger">비밀번호가 일치하지 않습니다.</div>
-                    </div>
-
+                    <div id="form_pw2"> 비밀번호 재확인 <input type="password", id='user_pw2' class="pw"></div>
                 </div>
+                
+                <div id="alert">
+                    <div class="alert alert-success" id="alert-success" style="color: red;">비밀번호가 일치합니다.</div> 
+                    <div class="alert alert-danger" id="alert-danger" style="color: red;">비밀번호가 일치하지 않습니다.</div>
+                </div>
+                
                 <div id="form2">
                     <div id="form_name">이 름<input type="text" name="userName" id="user_name1"></div>
                     <div id="form_birthday">생년월일<input type="text" name = 'userbirthDay' id="user_birthday" placeholder="YYYYMMDD"></div>

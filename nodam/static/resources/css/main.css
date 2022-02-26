@@ -21,7 +21,8 @@ a:visited{color:grey; text-decoration: none;}
 } */
 #page_head{
     position:relative;
-    height: 120px; width:1400px;
+    height: 120px; width:1300px;
+    background-color: red;
 }
 #page_body{
     /* background-color: skyblue; */
@@ -32,7 +33,7 @@ a:visited{color:grey; text-decoration: none;}
     /* border: 2px solid red; */
     position:relative;
     height: 90px;
-    width:1400px;
+    width:1300px;
 }
 /* -------------------------------------------------- */
 

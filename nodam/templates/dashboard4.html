@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
     <meta charset=" UTF-8">
-    <title>main</title>
+    <title>노담지킴이</title>
+    <link href="../static/resources/imgs/logo.ico" rel="shortcut icon" type="image/x-icon">
     <link rel="stylesheet" type="text/css" href="../static/resources/css/main.css">
     <link rel="stylesheet" type="text/css" href="../static/resources/css/dashboard.css">
     <script src='../static/resources/js/jquery-3.6.0.min.js'></script>
@@ -23,9 +24,12 @@
             <div id="head_logo"><img src="../static/resources/imgs/logo.png" width="120px"></div>
             <div id="head_quote">" 나는 네가 <p>#노담</p>이면 좋겠어 "</div>
             <div id="head_signup">
-                <a href="{% url 'signup' %}"><span> 회원가입 </span></a>
-                <span>/</span>
-                <a href="{% url 'login' %}"><span> 로그인 </span></a>
+                {% if not request.session.username %}
+                    <a href="{% url 'signup' %}"><span> 회원가입 </span></a>
+                    <a href="{% url 'login' %}"><span> 로그인 </span></a>
+                {% else %}
+                    <a href="{% url 'logout' %}"><span id="logout_text"> 로그아웃 </span></a>
+                {% endif %}
             </div>
         </div>
 
@@ -42,24 +46,24 @@
             </ul>
         </div>
     </div>
-    <div id="page_body" style="height: 620px;">
+    <div id="page_body" style="height: 650px;">
         
         <div id="dashboard_body">
             <!-- 대쉬보드 버튼  -->
             <div id="dashboard_body_top">
-                <div class="dashboard_btns"><button id="dashboard1" onclick="dash1();">대쉬보드 1</button></div>
-                <div class="dashboard_btns"><button id="dashboard2" onclick="dash2();">대쉬보드 2</button></div>
-                <div class="dashboard_btns"><button id="dashboard3" onclick="dash3();">대쉬보드 3</button></div>
-                <div class="dashboard_btns"><button id="dashboard4" onclick="dash4();" style="background-color: rgba(240, 189, 65); font-family: SCD6; color:black">대쉬보드 4</button></div>
+                <div class="dashboard_btns"><button id="dashboard1" onclick="dash1();">대시보드 1</button></div>
+                <div class="dashboard_btns"><button id="dashboard2" onclick="dash2();">대시보드 2</button></div>
+                <div class="dashboard_btns"><button id="dashboard3" onclick="dash3();">대시보드 3</button></div>
+                <div class="dashboard_btns"><button id="dashboard4" onclick="dash4();" style="background-color: rgba(240, 189, 65); font-family: SCD6; color:black">대시보드 4</button></div>
             </div>
 
             <!-- 대쉬보드 내용  -->
-            <div id="dashboard_body_cotent" style="width:1200px; height: 480px; left:-200px;">
+            <div id="dashboard_body_cotent" style="width:1200px; height: 510px; left:-200px;">
                 <div id="content_title">서울시 간접흡연 실태</div>
                 <div id="content_left">
                     <div class='left_text' id="left_text_4">그림 1. 서울시 간접흡연 경험인구 통계</div>
                     <div class='left_img' id="left_img_4"></div>
-                    <div class="left_text2" id="left_text2_4">< 출처 : 아시아경제 > </div>
+                    <div class="left_text2" id="left_text2_4">< 출처 : 한국보건사회연구원 > </div>
                 </div>
                 <div id="content_right">
                     <div class='right_text' id="right_text_4">그림 2. 서울시 직장/가정실내 간접흡연 통계</div>

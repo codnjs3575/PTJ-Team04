@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
     <meta charset=" UTF-8">
-    <title>main</title>
+    <title>노담지킴이</title>
+    <link href="../static/resources/imgs/logo.ico" rel="shortcut icon" type="image/x-icon">
     <link rel="stylesheet" type="text/css" href="../static/resources/css/main.css">
     <link rel="stylesheet" type="text/css" href="../static/resources/css/dashboard.css">
     <script src='../static/resources/js/jquery-3.6.0.min.js'></script>
@@ -24,9 +25,12 @@
             <div id="head_logo"><img src="../static/resources/imgs/logo.png" width="120px"></div>
             <div id="head_quote">" 나는 네가 <p>#노담</p>이면 좋겠어 "</div>
             <div id="head_signup">
-                <a href="{% url 'signup' %}"><span> 회원가입 </span></a>
-                <span>/</span>
-                <a href="{% url 'login' %}"><span> 로그인 </span></a>
+                {% if not request.session.username %}
+                    <a href="{% url 'signup' %}"><span> 회원가입 </span></a>
+                    <a href="{% url 'login' %}"><span> 로그인 </span></a>
+                {% else %}
+                    <a href="{% url 'logout' %}"><span id="logout_text"> 로그아웃 </span></a>
+                {% endif %}
             </div>
         </div>
         <div id="head_menu">
@@ -46,15 +50,15 @@
         <div id="dashboard_body">
             <!-- 대쉬보드 버튼  -->
             <div id="dashboard_body_top">
-                <div class="dashboard_btns"><button id="dashboard1" onclick="dash1();">대쉬보드 1</button></div>
-                <div class="dashboard_btns"><button id="dashboard2" onclick="dash2();">대쉬보드 2</button></div>
-                <div class="dashboard_btns"><button id="dashboard3" onclick="dash3();" style="background-color: rgba(240, 189, 65); font-family: SCD6; color:black">대쉬보드 3</button></div>
-                <div class="dashboard_btns"><button id="dashboard4" onclick="dash4();">대쉬보드 4</button></div>
+                <div class="dashboard_btns"><button id="dashboard1" onclick="dash1();">대시보드 1</button></div>
+                <div class="dashboard_btns"><button id="dashboard2" onclick="dash2();">대시보드 2</button></div>
+                <div class="dashboard_btns"><button id="dashboard3" onclick="dash3();" style="background-color: rgba(240, 189, 65); font-family: SCD6; color:black">대시보드 3</button></div>
+                <div class="dashboard_btns"><button id="dashboard4" onclick="dash4();">대시보드 4</button></div>
             </div>
 
             <!-- 대쉬보드 내용  -->
             <div id="dashboard_body_cotent" style="height: 780px;">
-                <div id="content_title">서울시 금연구역 <p id="title_text">< 지역사회 건강통계 ></p> </div>
+                <div id="content_title">서울시 금연구역 <p id="title_text">< 출처 : 지역사회 건강통계 ></p> </div>
                 <div id="db3"></div>
                 <!-- <p>설명</p> -->
            

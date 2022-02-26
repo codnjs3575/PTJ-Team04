@@ -38,7 +38,7 @@
 </head>
 <body style="overflow-y:hidden;"> 
         <div style="height:720px;">
-            <div style="height :42px;"><span id="map_head_content" style="font-size:32px";></span></div>
+            <div style="height :42px; width: 130px;"><span id="map_head_content";></span></div>
             <div class="folium-map" id="map_ba67c9a72a4f46eaa6003674deaba238" gu="null"  style="border:1px solid black"></div>
         </div>  
         
@@ -96,7 +96,7 @@
         })
 
         $('.leaflet-zoom-animated path').eq(6).mouseenter(function(){
-            document.getElementById('map_head_content').innerText= '영등포구 53';
+            document.getElementById('map_head_content').innerText= '영등포구 53개';
         })//영등포구
         $('.leaflet-zoom-animated path').eq(6).mouseout(function(){
             document.getElementById('map_head_content').innerText= '';

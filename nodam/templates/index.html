@@ -19,6 +19,7 @@
         //		jsonfunc(xhttp.responseText); // 둘다 가능
             }
         }
+        
         xhttp.open("GET","../static/resources/crawling/nc_count.json", true);
         xhttp.send();
 
@@ -334,7 +335,7 @@
                     <div id="search_health">
                         <div id="health_top">
                             <div id="health_img"></div>
-                            <p id="health_title">보건소 찾기</p>
+                            <p id="health_title">금연 클리닉 운영 보건소 찾기</p>
                             <a href="{% url 'clinic' %}"><p id="view_all">전체 보기</p></a>
                         </div>
                         <div id="health_left">
